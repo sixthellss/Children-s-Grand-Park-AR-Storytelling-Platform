@@ -1,0 +1,195 @@
+/* Basic Styles */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Header */
+  header {
+    background-color: green;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  header h2 {
+    font-size: 1.5em;
+    margin: 5px 0 0;
+  }
+  
+  /* Main Content */
+  main {
+    padding: 20px;
+  }
+  
+  /* Sections */
+  section {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 20px;
+  }
+  
+  /* Headings */
+  h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+
+  .profile-pic {
+    width: 200px;
+    height: 250px;
+    border-radius: 30%;
+    position: absolute;
+    left: 160px;
+    top: 50px;
+  }
+  
+  .navigation {
+    list-style-type: none;
+    padding: 0;
+  }
+  .navigation li {
+    padding: 10px 0;
+    cursor: pointer;
+  }
+
+  /* Contact */
+  #contact ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #contact ul li {
+    margin-bottom: 10px;
+  }
+  
+  /* Summary */
+  #summary p {
+    text-align: justify;
+  }
+  
+  /* Work Experience */
+  #work-experience ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #work-experience ul li {
+    margin-bottom: 20px;
+  }
+  
+  #work-experience ul li h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  #work-experience ul li h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
+  #work-experience ul li h5 {
+    font-size: 0.9em;
+    margin-bottom: 10px;
+  }
+  
+  #work-experience ul li ul {
+    list-style: circle;
+    padding-left: 20px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 20px;
+  }
+  
+  /* Education */
+  #education h3 {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  #education h4 {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
+  /* Skills */
+  #skills ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  #skills ul li {
+    display: inline-block;
+    margin-right: 20px;
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Link Styles */
+  a {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    /* Mobile Styles */
+  
+    body {
+      font-size: 16px;
+    }
+  
+    header h1 {
+      font-size: 1.8em;
+    }
+  
+    header h2 {
+      font-size: 1.3em;
+    }
+  
+    section {
+      margin-bottom: 10px;
+    }
+  
+    #work-experience ul li ul {
+      padding-left: 10px;
+    }
+    .button {
+        padding: 8px 16px;
+        background: rgba(0, 0, 0, 0.8);
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-right: 10px;
+    }
+
+  }
+  
+
+  
