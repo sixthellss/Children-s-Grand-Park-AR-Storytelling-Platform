@@ -8,6 +8,19 @@
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
     <script src="../js/counter.js" charset="utf-8"></script>
+    <script src="../js/index.js"></script>
+    <script>
+      window.embeddedChatbotConfig = {
+        chatbotId: "jFEHH0Sz8d2D1XyxGeuuW",
+        domain: "www.chatbase.co",
+      };
+    </script>
+    <script
+      src="https://www.chatbase.co/embed.min.js"
+      chatbotId="jFEHH0Sz8d2D1XyxGeuuW"
+      domain="www.chatbase.co"
+      defer
+    ></script>
     <link
       rel="stylesheet"
       href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css"
@@ -15,11 +28,12 @@
     <script>
       $(document).ready(function () {
         $(".slider").bxSlider({
-          auto: true,
-          speed: 400,
-          pause: 2000,
-          mode: "fade",
-          pager: true,
+          minSlides: 4,
+          maxSlides: 4,
+          slideWidth: 450,
+          slideMargin: 20,
+          ticker: true,
+          speed: 14000,
         });
       });
     </script>
@@ -218,10 +232,52 @@
     </section>
     <section class="bxSlider">
       <div class="slider">
-        <div><img src="../imgs/happyFamily.png" alt="" /></div>
-        <div><img src="../imgs/escaped.webp" alt="" /></div>
-        <div><img src="../imgs/main.png" alt="" /></div>
+        <div
+          class="textInBx1"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          BXSLIDER
+        </div>
+        <div
+          class="textInBx2"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          This site is really good. <br />
+          Thank you for letting me
+          <br />
+          have a fun experience with my children.
+        </div>
+        <div
+          class="textInBx3"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          SUPER FUN <br />
+          THANKS for exciting EXPERIMENT
+        </div>
       </div>
     </section>
+
+    <footer>
+      <div class="subscribe">
+        <h1>Subscription</h1>
+        <p>Stay up to date on the latest features</p>
+        <div class="emailInput">
+          <input type="text" placeholder="Please Enter Email Here" />
+          <button>subscribe</button>
+        </div>
+        <p>By subscribing, you agree to our Privacy</p>
+      </div>
+      <div class="teamMember">
+        <h1>Our Team Members</h1>
+        <div class="memberId">
+          <p>Lee ChangKyu</p>
+          <p>Lee ChangKyu</p>
+
+          <p>Lee ChangKyu</p>
+          <p>Lee ChangKyu</p>
+          <p>Lee ChangKyu</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
