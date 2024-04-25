@@ -5,6 +5,14 @@ body {
     background-position: center;
     color: white;
 }
+h2 {
+    background: rgba(4, 0, 0, 0.5);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    flex-basis: 30%; /* Adjust size per item based on desired number per row */
+    text-align: center;
+}
 
 .header-bg, .animal-navigation ul, .section-bg {
     background: rgba(0, 0, 0, 0.5); /* 헤더와 섹션 배경을 반투명으로 조정하여 텍스트 가독성 보장 */
@@ -61,7 +69,7 @@ body {
 }
 
 .animal-item {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(4, 0, 0, 0.5);
     margin: 10px;
     padding: 20px;
     border-radius: 5px;
@@ -86,6 +94,7 @@ body {
 
 
 .section-bg-little{
+    
     background: rgba(107, 19, 19, 0.5);
     background-image: url('../imgs/serchAnimal/little_bg.png');
     background-size: 2000px auto;
