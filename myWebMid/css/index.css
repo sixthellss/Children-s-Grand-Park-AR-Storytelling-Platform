@@ -282,8 +282,8 @@ button {
 .aniImg {
   margin-top: 20px;
   background-image: url("../imgs/KakaoTalk_20240425_204219554.gif");
-  width: 600px;
-  height: 600px;
+  width: 450px;
+  height: 450px;
   background-size: cover;
   border-radius: 10px;
 }
