@@ -76,7 +76,7 @@
         const loader = new GLTFLoader();
         loader.load('/models/fox/scene.gltf', function(gltf) {
             model = gltf.scene;
-            model.scale.set(20, 20, 20);
+            model.scale.set(30, 30, 30);
             model.position.set(0, 0, 0);
             scene.add(model);
             animate();
@@ -92,7 +92,7 @@
         function animate() {
             requestAnimationFrame(animate);
             if (model) {
-                model.rotation.y += 0.01; // Rotate the model around the y-axis
+                model.rotation.y += 0.005; // Rotate the model around the y-axis
             }
             controls.update();
             renderer.render(scene, camera);

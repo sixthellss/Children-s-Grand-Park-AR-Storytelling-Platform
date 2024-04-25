@@ -76,7 +76,7 @@
         const loader = new GLTFLoader();
         loader.load('/models/elephant/scene.gltf', function(gltf) {
             model = gltf.scene;
-            model.scale.set(1, 1, 1);
+            model.scale.set(1.7, 1.7, 1.7);
             model.position.set(0, 0, 0);
             scene.add(model);
             animate();
@@ -92,7 +92,7 @@
         function animate() {
             requestAnimationFrame(animate);
             if (model) {
-                model.rotation.y += 0.01; // Rotate the model around the y-axis
+                model.rotation.y += 0.007; // Rotate the model around the y-axis
             }
             controls.update();
             renderer.render(scene, camera);

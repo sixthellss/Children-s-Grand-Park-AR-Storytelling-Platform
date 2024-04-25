@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="../css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="../js/encounter.js"></script>
     <script src="../js/counter.js" charset="utf-8"></script>
     <script src="../js/index.js"></script>
     <script>
@@ -30,12 +38,47 @@
         $(".slider").bxSlider({
           minSlides: 4,
           maxSlides: 4,
-          slideWidth: 450,
-          slideMargin: 20,
+          slideWidth: 550,
+          slideMargin: 5,
           ticker: true,
-          speed: 14000,
+          speed: 20000,
         });
       });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $(".LearnBtn, .LearnBtnA, .LearnBtnMain").click(function (event) {
+          event.preventDefault(); // 링크의 기본 동작 방지
+
+          // 이동할 위치 계산 (예: main2 섹션으로 이동)
+          var targetPosition = $(".main2").offset().top;
+
+          // 스크롤 애니메이션
+          $("html, body").animate(
+            {
+              scrollTop: targetPosition,
+            },
+            900
+          ); // 이동 속도 (밀리초 단위)
+        });
+      });
+    </script>
+    <script>
+      const loader = new GLTFLoader();
+      loader.load(
+        "../models/main.glb",
+        function (gltf) {
+          scene.add(gltf.scene);
+          gltf.scene.scale.set(1, 1, 1); // Adjust the scale of the model
+          gltf.scene.position.set(0, 0, 0); // Adjust the position of the model
+
+          animate();
+        },
+        undefined,
+        function (error) {
+          console.error("Error loading the GLB file:", error);
+        }
+      );
     </script>
   </head>
   <body>
@@ -44,11 +87,8 @@
         <a>Children's Grand Park Service</a>
       </div>
       <div class="navSemiBar2">
-        <button class="ExploreBtn">
-          <a href="">Explore Park</a>
-        </button>
         <button class="LearnBtn">
-          <a href="">Learn More</a>
+          <a class="LearnBtnA" href="">Learn More</a>
         </button>
         <button class="StartBtn">
           <a href="AR_main.html">Start Now</a>
@@ -69,7 +109,7 @@
           </div>
 
           <button class="LearnBtnMain">
-            <a href="">Learn More</a>
+            <a class="LearnBtnA">Learn More</a>
           </button>
           <button class="StartBtnMain">
             <a href="AR_main.html">Start Now</a>
@@ -93,9 +133,9 @@
           <div>
             <div class="secFirst2">Explore now</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Use our AR guide to navigate the park, It's cool to explore park
+              with our Navigation.
             </div>
           </div>
         </div>
@@ -106,9 +146,9 @@
           <div>
             <div class="secFirst2">Discover More</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Uncover hidden treasures,
+              <br />and unlock magical experiences.
             </div>
           </div>
         </div>
@@ -119,9 +159,10 @@
           <div>
             <div class="secFirst2">Create Memories!!</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Create Memories with our Service
+              <br />
+              U guys will like it!
             </div>
           </div>
         </div>
@@ -132,9 +173,9 @@
           <div>
             <div class="secFirst2">Just Join Us!</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Just try our service and additionally we have a subscribe Service.
+              Join Us!
             </div>
           </div>
         </div>
@@ -142,7 +183,7 @@
     </section>
     <section class="main3">
       <!-- <hr class="midBar" /> -->
-      <div class="secDiv">
+      <div class="secDivFin">
         <div class="secFirst">
           <div>
             <img src="../imgs/Content.png" alt="" />
@@ -150,9 +191,9 @@
           <div>
             <div class="secFirst2">Our Mascot</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Our mascot is a character, animal, or person that symbolizes a
-              company, organization, sports team, or event.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Our park's mascot is found exclusively in Children's Grand Park!
+              You'll often find it enjoying long naps throughout the day
             </div>
           </div>
         </div>
@@ -161,12 +202,11 @@
             <img src="../imgs/Content.png" alt="" />
           </div>
           <div>
-            <div class="secFirst2">Discover More</div>
+            <div class="secFirst2">He is a</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Mascots can be utilized in various fields. In the case of sports
-              teams, a mascot represents the team's identity and helps entertain
-              fans during games or boost the atmosphere.
+            <div class="secSemiDiv" style="font-size: 17px">
+              Curious individuals here and there enjoy interacting and
+              exchanging stories with various people or animals.
             </div>
           </div>
         </div>
@@ -175,31 +215,19 @@
             <img src="../imgs/Content.png" alt="" />
           </div>
           <div>
-            <div class="secFirst2">Create Memories!!</div>
+            <div class="secFirst2">Talk With Him!</div>
 
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
-            </div>
-          </div>
-        </div>
-        <div class="secFirst">
-          <div>
-            <img src="../imgs/Content.png" alt="" />
-          </div>
-          <div>
-            <div class="secFirst2">Just Join Us!</div>
-
-            <div class="secSemiDiv" style="font-size: 15px">
-              Use our AR guide to navigate the park, uncover hidden treasures,
-              and unlock magical experiences.
+            <div class="secSemiDiv" style="font-size: 17px">
+              He wants to talk with you guys! Click the Button and Ask him about
+              the ChildrenGrandPark!
             </div>
           </div>
         </div>
       </div>
       <div class="firstDiv">
-        <div>
-          Meet an <br />interactive adventure <br />in the Children's Park
+        <div style="font-size: 40px">
+          Meet our Mascot <br />
+          He lives in the Children's Park
         </div>
         <div class="aniImg"></div>
       </div>
@@ -208,7 +236,8 @@
     <section class="main4">
       <div class="main4First">
         <div class="firstSemi">
-          Discover the Exciting World of Adventure and Magic at Children's Park
+          Dive into the wonders of the Children's Park with our augmented
+          reality adventure.
         </div>
         <div class="firstSemiDiv">
           Immerse yourself in a virtual AR guide to the Children's Park and
@@ -216,47 +245,104 @@
         </div>
         <div class="main4Container">
           <div class="visit">
-            <div class="website-counter">people visited us</div>
-
+            <div class="website-counter">3476 people visited us</div>
             Explore the park with our immersive augmented reality features.
           </div>
           <div class="liked">
             <h3>91% Satisfied visitors</h3>
-            Experience the magic of Children's Park with our AR guide.
+            An overwhelming majority of visitors left with smiles on their
+            faces.
           </div>
         </div>
       </div>
-      <div class="secDiv">
+      <div class="secDiv0101">
         <div class="familyDiv"></div>
       </div>
     </section>
+    <section
+      class="Album"
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        font-weight: normal;
+      "
+    >
+      <p>Our Album</p>
+    </section>
+
     <section class="bxSlider">
       <div class="slider">
         <div
           class="textInBx1"
           style="display: flex; justify-content: center; align-items: center"
         >
-          BXSLIDER
+          <!-- Thanks for making this site so enjoyable and engaging! -->
         </div>
         <div
           class="textInBx2"
           style="display: flex; justify-content: center; align-items: center"
         >
-          This site is really good. <br />
-          Thank you for letting me
-          <br />
-          have a fun experience with my children.
+          <!-- I'm grateful for the fun and entertainment I've found on this site.
+          Keep up the great work! -->
         </div>
         <div
           class="textInBx3"
           style="display: flex; justify-content: center; align-items: center"
         >
-          SUPER FUN <br />
-          THANKS for exciting EXPERIMENT
+          <!-- Glad you had a blast!
+          <br />We appreciate your enthusiasm for our thrilling experiment -->
+        </div>
+        <div
+          class="textInBx4"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <!-- Glad you had a blast!
+          <br />We appreciate your enthusiasm for our thrilling experiment -->
+        </div>
+        <div
+          class="textInBx5"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <!-- Glad you had a blast!
+        <br />We appreciate your enthusiasm for our thrilling experiment -->
+        </div>
+        <div
+          class="textInBx6"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <!-- Glad you had a blast!
+      <br />We appreciate your enthusiasm for our thrilling experiment -->
         </div>
       </div>
     </section>
-
+    <section class="ReviewDiv">
+      <div>
+        <img src="../imgs/Vector.png" alt="" style="width: 30px" />
+        <img src="../imgs/Vector.png" alt="" style="width: 30px" />
+        <img src="../imgs/Vector.png" alt="" style="width: 30px" />
+        <img src="../imgs/Vector.png" alt="" style="width: 30px" />
+        <img src="../imgs/Vector.png" alt="" style="width: 30px" />
+      </div>
+      <div>
+        <h3>
+          The AR experiences provided by the Children's Park website
+          <br />
+          have been nothing short of amazing.
+          <br />My kids were completely immersed in a world of adventure and
+          magic. <br />It was an unforgettable experience for the whole family.
+        </h3>
+      </div>
+      <div>
+        <img
+          src="
+        "
+          alt=""
+        />
+        <h4>John Doe</h4>
+      </div>
+    </section>
     <footer>
       <div class="subscribe">
         <h1>Subscription</h1>
@@ -270,12 +356,16 @@
       <div class="teamMember">
         <h1>Our Team Members</h1>
         <div class="memberId">
-          <p>Lee ChangKyu</p>
-          <p>Lee ChangKyu</p>
+          <div class="member1">
+            <p>Bakytov Yelnur</p>
+            <p>Lee ChangKyu</p>
+            <p>Park YuHan</p>
+          </div>
+          <div class="member1">
+            <p>Jung DaHan</p>
 
-          <p>Lee ChangKyu</p>
-          <p>Lee ChangKyu</p>
-          <p>Lee ChangKyu</p>
+            <p>Ibrokhimov Jakhongir Ibrokhim Ugli</p>
+          </div>
         </div>
       </div>
     </footer>

@@ -17,9 +17,10 @@ body {
 }
 .navSemiBar1 {
   margin-left: 100px;
-  margin-right: 600px;
+  margin-right: 900px;
 }
 .navSemiBar2 {
+  width: 300px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -214,18 +215,39 @@ button {
   align-items: center;
   flex-grow: 3;
   padding-right: 120px;
+  opacity: 0;
+  transition: opacity 3.5s ease; /* 텍스트가 서서히 나타나도록 하는 CSS transition */
+}
+.secDiv0101 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+}
+.secDivFin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+  opacity: 1;
+  transition: opacity 3.5s ease; /* 텍스트가 서서히 나타나도록 하는 CSS transition */
 }
 .secFirst {
   display: flex;
   flex-direction: row;
 }
+
 .secFirst div img {
   height: 140px;
 }
 .secFirst2 {
   font-size: 30px;
   font-weight: bold;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 .secSemiDiv {
   width: 300px;
@@ -238,8 +260,8 @@ button {
 .parkImg {
   margin-top: 20px;
   background-image: url("../imgs/park1.png");
-  width: 400px;
-  height: 400px;
+  width: 550px;
+  height: 550px;
   background-size: cover;
   border-radius: 10px;
 }
@@ -259,9 +281,9 @@ button {
 }
 .aniImg {
   margin-top: 20px;
-  background-image: url("../imgs/escaped.webp");
-  width: 400px;
-  height: 400px;
+  background-image: url("../imgs/KakaoTalk_20240425_204219554.gif");
+  width: 600px;
+  height: 600px;
   background-size: cover;
   border-radius: 10px;
 }
@@ -283,16 +305,19 @@ button {
   height: 640px;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url("../imgs/happyFamily.png");
+  background-image: url("../imgs/fun.jpg");
   border-radius: 10px;
 }
 .main4Container {
   display: flex;
   justify-content: space-between;
 }
-.visit,
+.visit {
+  padding-right: 20px;
+}
 .liked {
   font-size: 20px;
+  margin-top: 18px;
 }
 .main4First {
   font-size: 20px;
@@ -334,49 +359,93 @@ button {
   justify-content: center;
   align-items: center;
   height: 500px;
-  background-color: darkcyan;
+  width: 500px;
   background-size: cover;
   background-repeat: no-repeat;
   font-size: 30px;
   color: white;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_03.jpg");
+  background-position: center;
 }
 .textInBx2 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 500px;
-  background-color: #fc6e51;
   background-size: cover;
   background-repeat: no-repeat;
   font-size: 30px;
-  color: white;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_01.jpg");
+  background-position: center;
 }
 .textInBx3 {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 500px;
-  background-color: darkseagreen;
   background-size: cover;
   background-repeat: no-repeat;
   font-size: 30px;
-  color: white;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_04.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_05.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_02.jpg");
+  width: 800px;
+  background-position: center;
 }
 
 /*counter*/
 
 .website-counter {
-  background-color: rgb(177, 220, 113);
-  text-align: center;
+  text-align: left;
   width: 200px;
-  height: 30px;
+  height: 40px;
   padding: 10px;
-  color: white;
+  color: black;
   border-radius: 20px;
-  font-weight: 400;
-  font-size: 20px;
-  margin-top: 40px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 30px;
   margin-bottom: 10px;
+  margin-left: -10px;
 }
 
 /*Footer*/
@@ -420,6 +489,22 @@ footer {
 
 .memberId {
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  flex-direction: row;
 }
+.member1 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+/*reviewDiv*/
+.ReviewDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 503px;
+}
+
+.ReviewDiv h3 {
+  text-align: center;
+} /*reviewDiv*/
