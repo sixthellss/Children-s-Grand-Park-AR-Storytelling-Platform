@@ -22,7 +22,7 @@
         #speechBubble {
             position: absolute;
             top: 20%; /* Adjust this value to move the bubble up or down */
-            left: 50%; /* Adjust this value to move the bubble left or right */
+            left: 55%; /* Adjust this value to move the bubble left or right */
             width: 200px; /* Width of the bubble */
             height: 100px; /* Height of the bubble */
             background: white;
@@ -54,7 +54,7 @@
             color: white;
             padding: 20px;
             box-sizing: border-box;
-            font-size: 30px;
+            font-size: 23px;
             z-index: 15;
             text-align: center;
         }
@@ -140,7 +140,7 @@ If you hold down the mouse button and move it, you can see the object from diffe
         const loader = new GLTFLoader();
         loader.load('/models/main.glb', function(gltf) {
             scene.add(gltf.scene);
-            gltf.scene.scale.set(1, 1, 1); // Adjust the scale of the model
+            gltf.scene.scale.set(1.5, 1.5, 1.5); // Adjust the scale of the model
             gltf.scene.position.set(0, 0, 0); // Adjust the position of the model
             animate();
         }, undefined, function(error) {
