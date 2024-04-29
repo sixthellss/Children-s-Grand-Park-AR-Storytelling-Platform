@@ -13,7 +13,7 @@ h2 {
     flex-basis: 30%; /* Adjust size per item based on desired number per row */
     text-align: center;
 }
-
+/* hi */
 .header-bg, .animal-navigation ul, .section-bg {
     background: rgba(0, 0, 0, 0.5); /* 헤더와 섹션 배경을 반투명으로 조정하여 텍스트 가독성 보장 */
 }
