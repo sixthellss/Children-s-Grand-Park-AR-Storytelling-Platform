@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My first three.js app with Video Background and GLB Model</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+      #video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+      #overlay {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        color: black;
+        z-index: 10;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px; /* 버튼 사이의 간격 */
+      }
+      #description {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        font-size: 20px;
+        z-index: 15;
+        text-align: center;
+      }
+      #toggleButton {
+        position: fixed; /* Changed from 'right' to 'fixed' */
+        top: 10px;
+        right: 10px; /* Changed from 'left' to 'right' */
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 102;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" autoplay muted playsinline></video>
+    <div id="overlay">
+      <h1>Welcome to AR Guide</h1>
+      <button onclick="location.href='../index.html'" class="btn">
+        Webpage
+      </button>
+      <button onclick="location.href='../map.html'" class="btn">Map</button>
+      <button onclick="location.href='../search_animal.html'" class="btn">
+        Search Animal
+      </button>
+      <button onclick="takeScreenshot()" class="btn">Take Screenshot</button>
+    </div>
+    <button id="toggleButton" onclick="toggleDescription()">
+      Story description hide/show
+    </button>
+
+    <div id="description">
+      <p>
+        The introduction of the maned wolf was prohibited, and it appears that
+        the African wild dog was introduced instead. This environment seems more
+        suitable for the red fox than for the maned wolf, resembling conditions
+        more akin to those of a leopard. Initially, there were three
+        individuals, but two were sent to Uchi Park Zoo, and the remaining one
+        continued to be exhibited until it died of old age. Subsequently, two
+        more were reintroduced. Currently, individuals named 'Hope' and 'Dong-i'
+        are residing there.
+      </p>
+      <p>
+        Adding to the context, red foxes (Vulpes vulpes) are remarkably
+        adaptable creatures found in a wide range of environments, from urban
+        areas to dense forests and arid deserts. They are known for their bushy
+        tail and vivid red fur, although their color can vary from pale
+        yellowish-red to deep reddish-brown. Red foxes are opportunistic feeders
+        and will eat practically anything, which includes small mammals, birds,
+        reptiles, fruits, and insects.
+      </p>
+      <p>
+        This dietary flexibility has allowed them to successfully colonize
+        diverse habitats across the globe. Moreover, red foxes are known for
+        their cunning nature and ability to elude predators, which is partially
+        why they have thrived in various environments, sometimes even
+        overlapping with human settlements.
+      </p>
+    </div>
+
+    <script type="module">
+      import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
+      import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
+      import { GLTFLoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js";
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then(function (stream) {
+          const video = document.getElementById("video");
+          video.srcObject = stream;
+          video.play();
+        })
+        .catch(function (error) {
+          console.error("Unable to access the camera/webcam.", error);
+        });
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+      directionalLight.position.set(1, 1, 1);
+      scene.add(directionalLight);
+
+      let model;
+      const loader = new GLTFLoader();
+      loader.load(
+        "map_ko-3d-2.glb",
+        function (gltf) {
+          model = gltf.scene;
+          model.scale.set(1.5, 1.5, 1.5);
+          model.position.set(0, 0, 0);
+          scene.add(model);
+          animate();
+        },
+        undefined,
+        function (error) {
+          console.error("Error loading the GLB file:", error);
+        }
+      );
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.minDistance = 1;
+      controls.maxDistance = 500;
+      camera.position.z = 5;
+
+      function animate() {
+        requestAnimationFrame(animate);
+        if (model) {
+          model.rotation.y += 0.005; // Rotate the model around the y-axis
+        }
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      function takeScreenshot() {
+        renderer.render(scene, camera);
+        const imgData = renderer.domElement
+          .toDataURL("image/png")
+          .replace("image/png", "image/octet-stream");
+        const link = document.createElement("a");
+        link.download = "ar-screenshot.png";
+        link.href = imgData;
+        link.click();
+      }
+
+      window.addEventListener("resize", function () {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      function toggleDescription() {
+        var description = document.getElementById("description");
+        if (description.style.display === "none") {
+          description.style.display = "block";
+        } else {
+          description.style.display = "none";
+        }
+      }
+
+      // Get the toggle button by its ID and add a click event listener
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", toggleDescription);
+
+      // ... (the rest of your Three.js and media stream setup code) ...
+    </script>
+  </body>
+</html>

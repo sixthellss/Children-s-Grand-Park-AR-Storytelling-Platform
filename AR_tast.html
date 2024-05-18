@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app with Video Background and GLB Model</title>
+    <style>
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+      canvas {
+        display: block;
+      }
+      #video {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: -1;
+      }
+      #overlay {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        color: black;
+        z-index: 10;
+      }
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+      #speechBubble {
+        position: absolute;
+        top: 20%;
+        left: 55%;
+        width: 200px;
+        height: 100px;
+        background: white;
+        border: 2px solid black;
+        border-radius: 50px;
+        padding: 20px;
+        box-sizing: border-box;
+        font-size: 16px;
+        text-align: center;
+        z-index: 20;
+        transform: translate(-50%, -50%);
+      }
+
+      #speechBubble:after {
+        content: "";
+        position: absolute;
+        bottom: -40px;
+        left: 30%;
+        border-width: 20px;
+        border-style: solid;
+        border-color: white transparent transparent transparent;
+        transform: translateX(-50%);
+      }
+      #description {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 20px;
+        box-sizing: border-box;
+        font-size: 23px;
+        z-index: 15;
+        text-align: center;
+      }
+      #toggleButton {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        padding: 10px 20px;
+        background-color: #333;
+        color: white;
+        border: none;
+        cursor: pointer;
+        z-index: 102;
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" autoplay muted playsinline></video>
+    <div id="overlay">
+      <h1>Welcome to AR Guide</h1>
+
+      <button onclick="location.href='index.html'" class="btn">Webpage</button>
+      <button onclick="location.href='map.html'" class="btn">Map</button>
+      <button onclick="location.href='search_animal.html'" class="btn">
+        Search Animal
+      </button>
+    </div>
+
+    <button id="toggleButton" onclick="toggleDescription()">
+      Description hide/show
+    </button>
+
+    <script type="module">
+      import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
+      import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
+      import { GLTFLoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js";
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({
+        antialias: true,
+        alpha: true,
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then(function (stream) {
+          const video = document.getElementById("video");
+          video.srcObject = stream;
+          video.play();
+        });
+
+      const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
+      scene.add(ambientLight);
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 3.0);
+      directionalLight.position.set(-11, -11, 1);
+      scene.add(directionalLight);
+
+      const loader = new GLTFLoader();
+      let model;
+
+      loader.load("map_ko-3d-2.glb", function (gltf) {
+        model = gltf.scene;
+        scene.add(model);
+        model.scale.set(1.5, 1.5, 1.5);
+        model.position.set(0, 0, 0);
+        animate();
+      });
+
+      loader.load("map_ko-3d-2.glb", function (gltf) {
+        model = gltf.scene;
+        scene.add(model);
+        model.scale.set(1.5, 1.5, 1.5);
+        model.position.set(0, 0, 0);
+        animate();
+      });
+
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.minDistance = 1;
+      controls.maxDistance = 500;
+      camera.position.z = 5;
+
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      function onMouseClick(event) {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+
+        const intersects = raycaster.intersectObject(model, true);
+
+        if (intersects.length > 0) {
+          window.open(
+            "https://www.google.co.kr/maps/place/%EC%96%B4%EB%A6%B0%EC%9D%B4%EB%8C%80%EA%B3%B5%EC%9B%90/data=!3m8!1e1!3m6!1sAF1QipNULG6yWa3DekqYqWKid3dgk8AEJ8VvKZgDewU1!2e10!3e11!6shttps:%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipNULG6yWa3DekqYqWKid3dgk8AEJ8VvKZgDewU1%3Dw224-h298-k-no-pi0-ya254-ro-0-fo100!7i8704!8i4352!4m17!1m7!3m6!1s0x357ca4d713856077:0x169df594b1f221cc!2z7Ja066aw7J2064yA6rO17JuQ!8m2!3d37.549363!4d127.0818126!16s%2Fm%2F0h3m64t!3m8!1s0x357ca4d713856077:0x169df594b1f221cc!8m2!3d37.549363!4d127.0818126!10e5!14m1!1BCgIgARICCAI!16s%2Fm%2F0h3m64t?hl=ko&entry=ttu",
+            "_blank"
+          );
+        }
+      }
+
+      window.addEventListener("click", onMouseClick, false);
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+
+      animate();
+
+      function toggleDescription() {
+        var description = document.getElementById("description");
+        if (description.style.display === "none") {
+          description.style.display = "block";
+        } else {
+          description.style.display = "none";
+        }
+      }
+
+      document
+        .getElementById("toggleButton")
+        .addEventListener("click", toggleDescription);
+    </script>
+  </body>
+</html>
