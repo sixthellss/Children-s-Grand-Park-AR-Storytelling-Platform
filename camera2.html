@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AR.js with GLB Model, Three.js Lighting, and Photo Capture</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        #captureButton {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 100;
+        }
+    </style>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+</head>
+<body>
+    <a-scene embedded arjs="sourceType: webcam;" vr-mode-ui="enabled: false" renderer="antialias: true" id="scene">
+        <a-marker preset="hiro">
+            <a-entity id="arModel" gltf-model="/models/main.glb" scale="1.5 1.5 1.5" position="0 0 0"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <button id="captureButton">Take Photo</button>
+
+    <script>
+        AFRAME.registerComponent('init-lights', {
+            init: function () {
+                const sceneEl = this.el.sceneEl;
+                const threeScene = sceneEl.object3D;
+
+                // Ambient Light
+                const ambientLight = new THREE.AmbientLight(0xffffff, 1.0); // Ambient light for soft lighting
+                threeScene.add(ambientLight);
+
+                // Directional Light
+                const directionalLight = new THREE.DirectionalLight(0xffffff, 3.0); // Stronger directional light
+                directionalLight.position.set(-1, -1, 1);
+                threeScene.add(directionalLight);
+            }
+        });
+
+        // Add the init-lights component to the scene
+        document.getElementById('scene').setAttribute('init-lights', '');
+
+        document.getElementById('captureButton').addEventListener('click', function () {
+            const sceneEl = document.querySelector('a-scene').components.renderer;
+            const canvas = sceneEl.renderer.domElement;
+
+            // Create a new image from the canvas
+            const image = canvas.toDataURL('image/png');
+
+            // Open the image in a new tab (useful for mobile devices)
+            const newTab = window.open();
+            newTab.document.body.style.margin = '0';
+            newTab.document.body.style.display = 'flex';
+            newTab.document.body.style.justifyContent = 'center';
+            newTab.document.body.style.alignItems = 'center';
+            const img = new Image();
+            img.src = image;
+            img.style.width = '100%';
+            img.style.height = 'auto';
+            newTab.document.body.appendChild(img);
+        });
+    </script>
+</body>
+</html>

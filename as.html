@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>My AR App with GLB Model</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+        #video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        #overlay { position: fixed; top: 20px; left: 20px; color: black; z-index: 10; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px; /* 버튼 사이의 간격 */
+        }
+        #description {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 23px;
+            z-index: 15;
+            text-align: center;
+        }
+        #toggleButton {
+            position: fixed; /* Changed from 'right' to 'fixed' */
+            top: 10px;
+            right: 10px; /* Changed from 'left' to 'right' */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 102;
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay">
+        <h1>Welcome to AR Guide</h1>
+        <button onclick="location.href='index.html'" class="btn">Webpage</button>
+        <button onclick="location.href='map.html'" class="btn">Map</button>
+        <button onclick="location.href='search_animal.html'" class="btn">Search Animal</button>
+    </div>
+
+    <button id="toggleButton" onclick="toggleDescription()">Description hide/show</button>
+
+    <div id="description">
+        <p>Q: How do I use it?</p>
+        <p>A: You can resize the 3D model by zooming in and out!!</p>
+        <p>If you hold down the mouse button and move it, you can see the object from different angles.</p>
+        <p>Additionally, you can move the model by clicking and dragging with the left mouse button or by using two fingers on a touch device!!</p>
+    </div>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.rawgit.com/jeromeetienne/AR.js/1.7.2/aframe/build/aframe-ar.js"></script>
+    <a-scene embedded arjs="sourceType: webcam;">
+        <a-marker preset="hiro">
+            <a-entity id="arModel" gltf-model="/models/main.glb" scale="1.5 1.5 1.5" position="0 0 0"></a-entity>
+        </a-marker>
+        <a-entity camera></a-entity>
+    </a-scene>
+
+    <script>
+        function toggleDescription() {
+            var description = document.getElementById('description');
+            if (description.style.display === 'none') {
+                description.style.display = 'block';
+            } else {
+                description.style.display = 'none';
+            }
+        }
+
+        // Get the toggle button by its ID and add a click event listener
+        document.getElementById('toggleButton').addEventListener('click', toggleDescription);
+    </script>
+</body>
+</html>
