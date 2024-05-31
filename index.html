@@ -381,3 +381,33 @@
     </footer>
   </body>
 </html>
+
+
+<script>
+
+  $(document).ready(function () {
+    var sliderSettings = {
+      minSlides: 1,
+      maxSlides: 1,
+      slideWidth: 300,
+      slideMargin: 5,
+      ticker: true,
+      speed: 20000,
+    };
+
+    if ($(window).width() > 768) {
+      sliderSettings.minSlides = 4;
+      sliderSettings.maxSlides = 4;
+      sliderSettings.slideWidth = 550;
+    }
+
+    $(".slider").bxSlider(sliderSettings);
+
+    $(".LearnBtn, .LearnBtnA, .LearnBtnMain").click(function (event) {
+      event.preventDefault();
+
+      var targetPosition = $(".main2").offset().top;
+      $("html, body").animate({ scrollTop: targetPosition }, 900);
+    });
+  });
+

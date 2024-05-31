@@ -508,3 +508,65 @@ footer {
 .ReviewDiv h3 {
   text-align: center;
 } /*reviewDiv*/
+
+
+/* 모바일 최적화 */
+@media only screen and (max-width: 768px) {
+  .navBar {
+    flex-direction: column;
+    height: auto;
+    align-items: flex-start;
+  }
+  .navSemiBar1, .navSemiBar2 {
+    margin: 0;
+    width: 100%;
+    justify-content: space-around;
+  }
+  .navSemiBar1 {
+    margin-bottom: 10px;
+  }
+  .mainFont {
+    font-size: 40px;
+    margin-left: 20px;
+  }
+  .mainFont2 {
+    font-size: 16px;
+  }
+  .firstDiv {
+    font-size: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .secFirst2 {
+    font-size: 24px;
+  }
+  .secSemiDiv {
+    font-size: 14px;
+    width: 100%;
+  }
+  .main4First, .firstSemi, .firstSemiDiv {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .main4Container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .ReviewDiv {
+    padding: 20px;
+  }
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .emailInput input {
+    width: 80%;
+  }
+  .emailInput button {
+    width: 80%;
+    margin-top: 10px;
+  }
+  .memberId {
+    flex-direction: column;
+  }
+}
