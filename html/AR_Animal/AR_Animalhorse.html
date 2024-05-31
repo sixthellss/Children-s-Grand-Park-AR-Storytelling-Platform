@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My first three.js app with Video Background and GLB Model</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; }
+        #video { position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; }
+        #overlay { position: fixed; top: 20px; left: 20px; color: black; z-index: 10; }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin-right: 10px; /* 버튼 사이의 간격 */
+        }
+        #description {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5); /* 반투명 배경 */
+            color: white;
+            padding: 20px;
+            box-sizing: border-box;
+            font-size: 20px;
+            z-index: 15;
+            text-align: center;
+        }
+        #toggleButton {
+            position: fixed; /* Changed from 'right' to 'fixed' */
+            top: 10px;
+            right: 10px; /* Changed from 'left' to 'right' */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 102;
+        }
+    </style>
+</head>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TMKTYMCBR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5TMKTYMCBR');
+</script>
+
+<body>
+    <video id="video" autoplay muted playsinline></video>
+    <div id="overlay">
+        <h1>Welcome to AR Guide</h1>
+        <button onclick="location.href='../index.html'" class="btn">Webpage</button>
+        <button onclick="location.href='../map.html'" class="btn">Map</button>
+        <button onclick="location.href='../search_animal.html'" class="btn">Search Animal</button>
+        <button id="resetButton" class="btn">Reset Animation</button>
+        <button id="animationButton" class="btn">Play Random Animation</button>
+    </div>
+    <button id="toggleButton" onclick="toggleDescription()">Story description hide/show</button>
+    <div id="description">
+        <p>
+            The story of the elephants at Seoul Children's Grand Park is a poignant one. Originally, the park was home to two Thai elephants, Tae-san and Tae-soon, who arrived in May 1975, a generous gift from Dongkuk Steel. This pair became integral members of the park, not only as exhibits but also as parents to several offspring, including Koshik, who later moved to Everland.
+        </p>
+        <p>
+            The narrative took a heartfelt turn when Tae-soon passed away in 1996, followed by her offspring Koko in 2002. After these losses, Tae-san experienced a period of solitude until the arrival of a new elephant family from Cambodia. This family included Kamdol, Kamsoon, and their son Kori. They quickly became a central attraction at the park, engaging visitors with their dynamic presence in the public enclosure.
+        </p>
+        <p>
+            In April 2023, the dynamics of the elephant exhibit underwent a significant change when Kamdol was transferred to Jeonju Zoo, leaving Kamsoon and Kori to continue enchanting park visitors together. This marked a new chapter for the elephants at the park, underscoring the ongoing story of these majestic creatures and their impact on the hearts of those who visit them.
+        </p>
+        <p>
+            Tragically, Tae-san passed away on October 13, 2011, at the age of 38, but his legacy, along with the ongoing story of the Cambodian elephant family, continues to resonate within the park. This tale of familial bonds, loss, and new beginnings provides a deep insight into the emotional lives of elephants and highlights their significance within the ecosystem of Seoul Children's Grand Park.
+        </p>
+    </div>
+
+    <script type="module">
+        import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
+        import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
+        import { GLTFLoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js";
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } })
+            .then(function(stream) {
+                const video = document.getElementById('video');
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function(error) {
+                console.error('Unable to access the camera/webcam.', error);
+            });
+
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 1.5);
+        directionalLight.position.set(1, 1, 1);
+        scene.add(directionalLight);
+
+        let model;
+        let mixer, actions = [];
+        let initialRotation, initialPosition, initialScale;
+
+        const loader = new GLTFLoader();
+        loader.load('/models/horse/scene.gltf', function(gltf) {
+            model = gltf.scene;
+            model.scale.set(1.7, 1.7, 1.7);
+            model.position.set(0, 0, 0);
+            initialRotation = model.rotation.clone();
+            initialPosition = model.position.clone();
+            initialScale = model.scale.clone();
+            scene.add(model);
+            mixer = new THREE.AnimationMixer(model);
+            gltf.animations.forEach((clip) => {
+                const action = mixer.clipAction(clip);
+                actions.push(action);
+            });
+            requestAnimationFrame(animate);
+        }, undefined, function(error) {
+            console.error('Error loading the GLB file:', error);
+        });
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.minDistance = 1;
+        controls.maxDistance = 500;
+        camera.position.z = 5;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('animationButton').addEventListener('click', playAnimation);
+            document.getElementById('resetButton').addEventListener('click', resetAnimation);
+            document.getElementById('toggleButton').addEventListener('click', toggleDescription);
+        });
+
+        function playAnimation() {
+            if (actions.length > 0) {
+                actions.forEach(action => action.stop());
+                const randomIndex = Math.floor(Math.random() * actions.length);
+                actions[randomIndex].reset().play();
+            }
+        }
+
+        function toggleDescription() {
+            var description = document.getElementById('description');
+            if (description.style.display === 'none') {
+                description.style.display = 'block';
+            } else {
+                description.style.display = 'none';
+            }
+        }
+
+        function animate() {
+            const delta = clock.getDelta();
+            if (mixer) mixer.update(delta);
+            renderer.render(scene, camera);
+            model.rotation.y += 0.01;  // 모델을 회전 상태로 유지
+            requestAnimationFrame(animate);
+        }
+
+        function resetAnimation() {
+            if (model) {
+                model.rotation.copy(initialRotation);
+                model.position.copy(initialPosition);
+                model.scale.copy(initialScale);
+                actions.forEach(action => action.stop());
+            }
+        }
+
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        const clock = new THREE.Clock();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Animals</title>
+    <link rel="stylesheet" href="../css/AR_style.css">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TMKTYMCBR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5TMKTYMCBR');
+</script>
+
+    <style>
+        /* 화살표 아이콘 스타일 */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5); /* 반투명 배경 */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 1000; /* 다른 요소 위에 표시되도록 z-index 설정 */
+            transition: opacity 0.3s;
+        }
+
+        .scroll-to-top img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .scroll-to-top.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="header-bg">
+        <div class="header-content">
+            <button onclick="location.href='AR_main.html'" class="btn left-btn">Back</button>
+        </div>
+        <nav class="animal-navigation">
+            <ul>
+                <li><a href="#little-animal-village" class="animal-item"><img src="../imgs/icon/little_icon.png" alt="Little Animals"> 꼬마동물마을(Small-Animal Vilage)</a></li>
+                <li><a href="#beast-village" class="animal-item"><img src="../imgs/icon/beast_icon.png" alt="Beasts"> 맹수마을(Ferocious-Animal Village)</a></li>
+                <li><a href="#tropical-animal-section" class="animal-item"><img src="../imgs/icon/turtle_icon.png" alt="Tropical Animals">열대동물관(Tropical Animal House)</a></li>
+                <li><a href="#water-bird-area" class="animal-item"><img src="../imgs/icon/waterbird_icon.png" alt="Water Birds">물새장(Aquatic Village)</a></li>
+                <li><a href="#monkey-village" class="animal-item"><img src="../imgs/icon/monkey_icon.png" alt="Monkeys">원숭이마을(Primate Village)</a></li>
+                <li><a href="#herbivore-village" class="animal-item"><img src="../imgs/icon/zebra_icon.png" alt="Herbivores">초식동물마을(Herbivore Village)</a></li>
+                <li><a href="#marine-animal-section" class="animal-item"><img src="../imgs/icon/seal_icon.png" alt="Marine Animals">바다동물관(Marine Animal House)</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="little-animal-village" class="section-bg-little">
+            <h2>꼬마동물마을</h2>
+            <div class="animal-grid">
+                
+                <div class="animal-item">
+                    <h3>왈라루(Wallaroo)</h3>
+                    <p>A macropod intermediate in size between a kangaroo and a wallaby, found in Australia.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%99%88%EB%9D%BC%EB%A3%A8'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>검은꼬리프레리도그(Black-tailed Prairie Dog)</h3>
+                    <p>A rodent native to the grasslands of North America, known for its complex burrow systems.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EA%B2%80%EC%9D%80%EA%BC%AC%EB%A6%AC%ED%94%84%EB%A0%88%EB%A6%AC%EB%8F%84%EA%B7%B8'" class="btn">Story</button>
+                    <button onclick="location.href='https://eur.4dkankan.com/spg.html?m=KK-eur-w9UQ3SLMh&lang=zh'" class="btn">VR Camera</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>미어캣(Meerkat)</h3>
+                    <p>A small carnivore belonging to the mongoose family, living in groups and known for standing upright to survey its surroundings.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%AF%B8%EC%96%B4%EC%BA%A3'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>표범무늬거북(Leopard Tortoise)</h3>
+                    <p>A large and attractively marked tortoise found in the savannas of Africa.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%ED%91%9C%EB%B2%94%EB%AC%B4%EB%8A%AC%EA%B1%B0%EB%B6%81'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>작은발톱수달(Asian Small-clawed Otter)</h3>
+                    <p>The smallest otter species, known for its dexterity and social behavior.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%88%98%EB%8B%AC'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>아프리카갈기호저(African Crested Porcupine)</h3>
+                    <p>A large rodent with quills, found across Africa, known for its defensive capabilities.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%ED%98%B8%EC%A0%80'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>사막여우(Fennec Fox)</h3>
+                    <p>A small fox native to the Sahara Desert, known for its large ears and ability to live in harsh desert environments.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%82%AC%EB%A7%89%EC%97%AC%EC%9A%B0'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>조랑말(Pony)</h3>
+                    <p>A small horse breed known for its strength and gentle nature.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%A1%B0%EB%9E%91%EB%A7%90'" class="btn">Story</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="beast-village" class="section-bg-beast">
+            <h2>맹수마을</h2>
+            <div class="animal-grid">
+            
+              
+                <div class="animal-item">
+                    <h3>아시아코끼리(Asian Elephant)</h3>
+                    <p>A large mammal native to Asia, known for its intelligence and social behavior.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%95%84%EC%8B%9C%EC%95%84%EC%BD%94%EB%81%BC%EB%A6%AC'" class="btn">Story</button>
+                    <a href="../html/AR_Animal/AR_AnimalElephant.html" class="btn ar-btn">AR Camera</a>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>사자(Lion)</h3>
+                    <p>A large carnivorous mammal known for its strength, pride structure, and distinctive mane.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%82%AC%EC%9E%90'" class="btn">Story</button>
+                    <a href="../html/AR_Animal/AR_Animallion.html" class="btn ar-btn">AR Camera</a>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>벵골호랑이(Bengal Tiger)</h3>
+                    <p>A subspecies of tiger found primarily in India, known for its power and beauty.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%B2%B5%EA%B3%A8%ED%98%B8%EB%9E%91%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>불곰(Brown Bear)</h3>
+                    <p>A large bear species found across Eurasia and North America, known for its strength and adaptability.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%B6%88%EA%B3%B0'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>재규어(Jaguar)</h3>
+                    <p>A large felid species native to the Americas, known for its powerful bite.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%9E%AC%EA%B7%9C%EC%96%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>아시아흑곰(Asian Black Bear)</h3>
+                    <p>A medium-sized bear species found in Asia, known for its distinctive white chest mark.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%95%84%EC%8B%9C%EC%95%84%ED%9D%91%EA%B3%B0'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>서벌(Serval)</h3>
+                    <p>A medium-sized wild cat native to Africa, known for its long legs and large ears.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%84%9C%EB%B2%8C'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>퓨마(Puma)</h3>
+                    <p>A large felid species found in the Americas, also known as a cougar or mountain lion.</p>
+                    <button onclick="location.href='https://example.com/puma'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>스라소니(Lynx)</h3>
+                    <p>A medium-sized wild cat found in the forests of Europe, Asia, and North America, known for its tufted ears.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%ED%93%A8%EB%A7%88'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>검은등자칼(Black-backed Jackal)</h3>
+                    <p>A medium-sized canine native to Africa, known for its distinctive black back and adaptable nature.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EA%B2%80%EC%9D%80%EB%93%B1%EC%9E%90%EC%B9%BC'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>붉은여우(Red Fox)</h3>
+                    <p>A small to medium-sized carnivorous mammal with a bushy tail, known for its cunning behavior.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%B6%89%EC%9D%80%EC%97%AC%EC%9A%B0'" class="btn">Story</button>
+                    <a href="../html/AR_Animal/AR_AnimalFox.html" class="btn ar-btn">AR Camera</a>
+                    <button onclick="location.href='https://eur.4dkankan.com/smobile.html?m=KK-eur-uO1VYBGtZ'" class="btn">VR Camera</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>점박이하이에나(Spotted Hyena)</h3>
+                    <p>A large carnivorous mammal native to sub-Saharan Africa, known for its social structure and laughing calls.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%A0%90%EB%B0%95%EC%9D%B4%ED%95%98%EC%9D%B4%EC%97%90%EB%82%98'" class="btn">Story</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Additional sections for other categories -->
+        <section id="tropical-animal-section" class="section-bg-tropical">
+            <h2>열대동물관</h2>
+            <div class="animal-grid">
+                <div class="animal-item">
+                    <h3>거북이(Turtle)</h3>
+                    <p>reptile with a hard shell, known for its slow movement and ability to retract its head and limbs into its shell for protection..</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EA%B1%B0%EB%B6%81?from=%EA%B1%B0%EB%B6%81%EC%9D%B4'" class="btn">Story</button>
+                    <a href="../html/AR_Animal/AR_Animalturtle.html" class="btn ar-btn">AR Camera</a>
+                </div>
+                <div class="animal-item">
+                    <h3>집토끼(Domestic Rabbit)</h3>
+                    <p>A domesticated species of rabbit, known for its long ears and soft fur.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%ED%86%A0%EB%81%BC'" class="btn">Story</button>
+                    <a href="../html/AR_Animal/AR_Animalrabbit.html" class="btn ar-btn">AR Camera</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="water-bird-area" class="section-bg-water-bird">
+
+            <h2>물새장</h2>
+
+            <div class="animal-grid">
+
+            <div class="animal-item">
+                <h3>큰사다새(Saddlebill Stork)</h3>
+                <p>A large wading bird found in sub-Saharan Africa, known for its distinctive bill.</p>
+                <button onclick="location.href='https://namu.wiki/w/%ED%81%B0%EC%82%AC%EB%8B%A4%EC%83%88'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>백황새(White Stork)</h3>
+                <p>A large bird in the stork family, known for its white plumage and black wing feathers.</p>
+                <button onclick="location.href='https://namu.wiki/w/%ED%99%8D%EB%B6%80%EB%A6%AC%ED%99%A9%EC%83%88?from=%EB%B0%B1%ED%99%A9%EC%83%88'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>검은머리흰따오기(Crested Ibis)</h3>
+                <p>A large, white-plumed ibis found in eastern Asia, known for its black crest and red face.</p>
+                <button onclick="location.href='https://namu.wiki/w/%ED%99%8D%EB%B6%80%EB%A6%AC%ED%99%A9%EC%83%88'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>해오라기(Black-crowned Night Heron)</h3>
+                <p>A medium-sized heron known for its black crown and back, with a white to grey body.</p>
+                <button onclick="location.href='https://namu.wiki/w/%ED%95%B4%EC%98%A4%EB%9D%BC%EA%B8%B0'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>왜가리(Grey Heron)</h3>
+                <p>A tall, long-legged wading bird, common across Europe, Asia, and parts of Africa.</p>
+                <button onclick="location.href='https://namu.wiki/w/%EC%99%9C%EA%B0%80%EB%A6%AC'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>두루미(Common Crane)</h3>
+                <p>A large bird known for its dancing displays and migratory behavior.</p>
+                <button onclick="location.href='https://namu.wiki/w/%EB%91%90%EB%A3%A8%EB%AF%B8'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>쇠재두루미(Demoiselle Crane)</h3>
+                <p>The smallest species of crane, known for its elegant appearance and long migrations.</p>
+                <button onclick="location.href='https://namu.wiki/w/%EC%87%A0%EC%9E%AC%EB%91%90%EB%A3%A8%EB%AF%B8'" class="btn">Story</button>
+            </div>
+            
+            <div class="animal-item">
+                <h3>아프리카펭귄(자카스펭귄)(African Penguin)</h3>
+                <p>A species of penguin native to the southern African coast, known for its loud, donkey-like bray.</p>
+                <button onclick="location.href='https://namu.wiki/w/%EC%95%84%ED%94%84%EB%A6%AC%EC%B9%B4%ED%8E%AD%EA%B7%84'" class="btn">Story</button>
+                <a href="../html/AR_Animal/AR_Animalpenguin.html" class="btn ar-btn">AR Camera</a>
+            </div>
+        </section>
+
+        <section id="monkey-village" class="section-bg-monkey">
+            <h2>원숭이마을</h2>
+            <div class="animal-grid">
+                <div class="animal-item">
+                    <h3>돼지꼬리원숭이(Pig-tailed macaque)</h3>
+                    <p>A species of monkey known for its pig-like tail.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%B6%81%EB%B6%80%EB%8F%BC%EC%A7%80%EA%BC%AC%EB%A6%AC%EC%9B%90%EC%88%AD%EC%9D%B4?from=%EB%8F%BC%EC%A7%80%EA%BC%AC%EB%A6%AC%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>올리브개코원숭이(Olive baboon)</h3>
+                    <p>A large species of baboon with an olive-colored coat.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%98%AC%EB%A6%AC%EB%B8%8C%EA%B0%9C%EC%BD%94%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>노란뺨긴팔원숭이(Northern white-cheeked gibbon)</h3>
+                    <p>A gibbon species known for its distinctive white cheeks.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%85%B8%EB%9E%80%EB%BA%A8%EA%B8%B4%ED%8C%94%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>은색긴팔원숭이(Silvery gibbon)</h3>
+                    <p>A gibbon species known for its silvery-grey fur.</p>
+                    <button onclick="location.href='https://ko.wikipedia.org/wiki/%EC%9D%80%EC%83%89%EA%B8%B4%ED%8C%94%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>일본원숭이(Japanese monkey)</h3>
+                    <p>A monkey native to Japan, known for its red face and adaptations to cold climates.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%9D%BC%EB%B3%B8%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>망토개코원숭이(Hamadryas baboon)</h3>
+                    <p>A species of baboon known for its large mane resembling a cape.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%A7%9D%ED%86%A0%EA%B0%9C%EC%BD%94%EC%9B%90%EC%88%AD%EC%9D%B4'" class="btn">Story</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="herbivore-village" class="section-bg-herbivore">
+            <h2>초식동물마을</h2>
+            <div class="animal-grid">
+                <div class="animal-item">
+                    <h3>말(Horese)</h3>
+                    <a href="../html/AR_Animal/AR_Animalhorse.html" class="btn ar-btn">AR Camera</a>
+                </div>
+                <div class="animal-item">
+                    <h3>과나코(Guanaco)</h3>
+                    <p>A wild camelid native to South America, closely related to the llama.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EA%B3%BC%EB%82%98%EC%BD%94'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>사바나얼룩말(교잡)(Savanna Zebra)</h3>
+                    <p>A zebra known for its unique stripes, found in the savannas of Africa.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%82%AC%EB%B0%94%EB%82%98%EC%96%BC%EB%A3%A9%EB%A7%90'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>붉은캥거루(Red Kangaroo)</h3>
+                    <p>The largest of all kangaroos, native to Australia, known for its powerful hind legs.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%B6%89%EC%9D%80%EC%BA%A5%EA%B1%B0%EB%A3%A8'" class="btn">Story</button>
+                    <button onclick="location.href='https://eur.4dkankan.com/smobile.html?m=eur-9MQWsJAXD&lang=en'" class="btn">VR Camera</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>당나귀(Donkey)</h3>
+                    <p>A domesticated member of the horse family, known for its strength and endurance.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%8B%B9%EB%82%98%EA%B7%80'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>알파카(Alpaca)</h3>
+                    <p>A domesticated species of South American camelid, known for its soft wool.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%95%8C%ED%8C%8C%EC%B9%B4'" class="btn">Story</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="marine-animal-section" class="section-bg-marine">
+            <h2>바다동물관</h2>
+            <div class="animal-grid">
+               
+                <div class="animal-item">
+                    <h3>남아프리카 물개(South African seal)</h3>
+                    <p>medium-sized otter native to sub-Saharan Africa, known for its lack of claws and aquatic lifestyle.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EB%82%A8%EC%95%84%EB%A9%94%EB%A6%AC%EC%B9%B4%EB%AC%BC%EA%B0%9C'" class="btn">Story</button>
+                </div>
+        
+                <div class="animal-item">
+                    <h3>유라시아수달(Eurasian Otter)</h3>
+                    <p>A species of otter found throughout Europe and Asia, known for its swimming ability and playful behavior.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%88%98%EB%8B%AC'" class="btn">Story</button>
+                </div>
+                
+                <div class="animal-item">
+                    <h3>점박이물범(Spotted Seal)</h3>
+                    <p>A species of seal known for its distinctive spotted coat, found in the North Pacific Ocean.</p>
+                    <button onclick="location.href='https://namu.wiki/w/%EC%A0%90%EB%B0%95%EC%9D%B4%EB%AC%BC%EB%B2%94'" class="btn">Story</button>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Add more sections for each village with similar layout -->
+    </main>
+    <footer>
+        <p>© 2024 Zoo AR Experience. All rights reserved.</p>
+    </footer>
+
+    <!-- 최상단으로 스크롤하는 화살표 아이콘 -->
+    <div class="scroll-to-top hidden" id="scrollToTop">
+        <img src="../imgs/up-arrow.png" alt="Scroll to top">
+    </div>
+
+    <script>
+        // 스크롤 이벤트 리스너 추가
+        window.addEventListener('scroll', function() {
+            var scrollToTop = document.getElementById('scrollToTop');
+            if (window.scrollY > 100) {
+                scrollToTop.classList.remove('hidden');
+            } else {
+                scrollToTop.classList.add('hidden');
+            }
+        });
+
+        // 아이콘 클릭 이벤트 리스너 추가
+        document.getElementById('scrollToTop').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

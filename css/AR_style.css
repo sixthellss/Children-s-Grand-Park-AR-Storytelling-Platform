@@ -1,0 +1,171 @@
+body {
+    font-family: Arial, sans-serif;
+    background: rgba(0, 0, 0, 0.5);
+    background-size: cover;
+    background-position: center;
+    color: white;
+}
+h2 {
+    background: rgba(4, 0, 0, 0.5);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    flex-basis: 30%; /* Adjust size per item based on desired number per row */
+    text-align: center;
+}
+/* hi */
+.header-bg, .animal-navigation ul, .section-bg {
+    background: rgba(0, 0, 0, 0.5); /* 헤더와 섹션 배경을 반투명으로 조정하여 텍스트 가독성 보장 */
+}
+.header-content {
+    display: flex;
+    align-items: center;
+}
+
+.left-btn {
+    margin-right: auto; /* 왼쪽에 버튼을 배치 */
+}
+
+.animal-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* 행이 넘칠 때 다음 줄로 넘기도록 설정 */
+    padding: 10px;
+    margin: 0;
+    background: rgba(0, 0, 0, 0.7); /* 배경을 조금 더 어둡게 조절 */
+}
+
+.animal-navigation li {
+    margin: 5px 10px; /* 각 항목 간의 여백 조정 */
+}
+
+.animal-navigation a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px; /* 링크의 패딩을 늘려 크기를 키움 */
+    transition: background-color 0.3s ease; /* 배경색 변경에 애니메이션 효과 추가 */
+}
+
+.animal-navigation a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* 호버 시 배경색 변경 효과 */
+}
+
+.animal-navigation img {
+    width: 130px; /* 이미지 크기 조정 */
+    height: 130px;
+    margin-right: 10px; /* 텍스트와의 간격 */
+}
+
+
+
+.animal-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.animal-item {
+    background: rgba(4, 0, 0, 0.5);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    flex-basis: 30%; /* Adjust size per item based on desired number per row */
+    text-align: center;
+}
+
+.header-bg{
+    background: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding: 20px;
+}
+
+.animal-navigation ul {
+    background: rgba(0, 0, 0, 0.5);
+    background-image: url('../imgs/icon/zoo-background.png'); /* 숲 이미지 경로 설정 */
+    text-align: center;
+    padding: 20px;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.section-bg-little{
+    
+    background: rgba(107, 19, 19, 0.5);
+    background-image: url('../imgs/serchAnimal/little_bg.png');
+    background-size: 2000px auto;
+
+    background-position: center;
+    
+
+}
+
+.section-bg-beast{
+    background: rgba(0, 123, 0, 0.5);
+    background-image: url('../imgs/serchAnimal/beast_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.section-bg-tropical{
+    background: rgba(0, 0, 123, 0.5);
+    background-image: url('../imgs/serchAnimal/tropical_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.section-bg-water-bird{
+    background: rgba(123, 123, 0, 0.5);
+    background-image: url('../imgs/serchAnimal/water-bird_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.section-bg-monkey{
+    background: rgba(0, 0, 0, 135);
+    background-image: url('../imgs/serchAnimal/monkey_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.section-bg-herbivore{
+    background: rgba(38, 199, 38, 0.5);
+    background-image: url('../imgs/serchAnimal/herbivore_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+.section-bg-marine{
+    background: rgba(123, 0, 123, 0.5);
+    background-image: url('../imgs/serchAnimal/marine_bg.png');
+    background-size: cover;
+    background-position: center;
+}
+
+
+
+
+.btn, .ar-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.6);
+}
