@@ -1,0 +1,11 @@
+Model Information:
+* title:	HORSE [DRAFT HORSE]
+* source:	https://sketchfab.com/3d-models/horse-draft-horse-725065392aad4b04b7a172f8cd965497
+* author:	BlueMesh (https://sketchfab.com/VapTor)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "HORSE [DRAFT HORSE]" (https://sketchfab.com/3d-models/horse-draft-horse-725065392aad4b04b7a172f8cd965497) by BlueMesh (https://sketchfab.com/VapTor) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

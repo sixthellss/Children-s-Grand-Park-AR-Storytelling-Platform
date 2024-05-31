@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js with GLTF Model and Skybox</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; width: 100%; height: 100vh; }
+    </style>
+</head>
+<body>
+    <script type="module">
+        import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
+        import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
+        import { GLTFLoader } from "https://unpkg.com/three@0.126.1/examples/jsm/loaders/GLTFLoader.js";
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // 스카이박스 로드
+        var loader = new THREE.CubeTextureLoader();
+        loader.setPath('/models/skybox/');
+        var textureCube = loader.load([
+            'px.jpg', 'nx.jpg',
+            'py.jpg', 'ny.jpg',
+            'pz.jpg', 'nz.jpg'
+        ]);
+        scene.background = textureCube;
+
+        // GLTF 모델 로드
+        var gltfLoader = new GLTFLoader();
+        gltfLoader.load('/models/main.glb', function(gltf) {
+            var model = gltf.scene;
+            model.position.set(0, -1.5, 0); // 모델 위치 조정
+            scene.add(model);
+        });
+
+        // 카메라 위치 및 방향 조정
+        camera.position.set(0, 2, 10);
+        camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+        // OrbitControls를 추가하여 사용자가 씬을 자유롭게 탐색할 수 있도록 설정
+        var controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.1;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update(); // 컨트롤 업데이트
+            renderer.render(scene, camera);
+        }
+        animate();
+        
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

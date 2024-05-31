@@ -1,0 +1,463 @@
+/* 기본 스타일 설정 */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* 네비게이션 바 스타일링 */
+.navBar {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+}
+
+.navSemiBar1 {
+  margin-left: 100px;
+  margin-right: 900px;
+}
+
+.navSemiBar2 {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* 버튼 스타일링 */
+button {
+  box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
+  background: #fc6e51;
+}
+
+.navSemiBar2 button {
+  margin-left: 40px;
+}
+
+.ExploreBtn,
+.StartBtn,
+.LearnBtn,
+.LearnBtnMain,
+.StartBtnMain {
+  width: 123px;
+  height: 40px;
+  border: 1px solid rgb(177, 220, 113);
+  transition: background-color 0.4s;
+}
+
+.ExploreBtn {
+  background-color: transparent;
+  color: black;
+}
+
+.ExploreBtn:hover,
+.StartBtn:hover,
+.LearnBtn:hover,
+.LearnBtnMain:hover,
+.StartBtnMain:hover {
+  background-color: rgb(177, 220, 113);
+}
+
+.LearnBtn {
+  background-color: black;
+}
+
+.LearnBtn a,
+.LearnBtnMain a {
+  color: white;
+  text-decoration: none;
+}
+
+.StartBtn {
+  background-color: transparent;
+  color: black;
+}
+
+.StartBtnMain {
+  background-color: white;
+  color: black;
+}
+
+.StartBtnMain a {
+  text-decoration: none;
+  color: black;
+}
+
+/* 메인 섹션 스타일링 */
+.main {
+  background-image: url("../imgs/main.png");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.mainImg {
+  display: flex;
+  align-items: center;
+  animation: fadein 3s;
+  -moz-animation: fadein 3s;
+  -webkit-animation: fadein 3s;
+  -o-animation: fadein 3s;
+}
+
+.mainFont {
+  margin-left: 64px;
+  font-size: 60px;
+  color: white;
+}
+
+.mainFont2 {
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+/* 페이드인 애니메이션 */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 섹션 스타일링 */
+.main2,
+.main3,
+.main4 {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+
+.firstDiv {
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  flex-grow: 3;
+  padding-left: 120px;
+}
+
+.secDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+  opacity: 0;
+  transition: opacity 3.5s ease;
+}
+
+.secDivFin {
+  opacity: 1;
+  transition: opacity 3.5s ease;
+}
+
+.secFirst {
+  display: flex;
+  flex-direction: row;
+}
+
+.secFirst div img {
+  height: 140px;
+}
+
+.secFirst2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+
+.secSemiDiv {
+  width: 300px;
+  font-size: 10px;
+  height: 100px;
+}
+
+.parkImg {
+  margin-top: 20px;
+  background-image: url("../imgs/park1.png");
+  width: 550px;
+  height: 550px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.aniImg {
+  margin-top: 20px;
+  background-image: url("../imgs/KakaoTalk_20240425_204219554.gif");
+  width: 450px;
+  height: 450px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.familyDiv {
+  width: 640px;
+  height: 640px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../imgs/fun.jpg");
+  border-radius: 10px;
+}
+
+.main4Container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.visit {
+  padding-right: 20px;
+}
+
+.liked {
+  font-size: 20px;
+  margin-top: 18px;
+}
+
+.main4First {
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  flex-grow: 2;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.firstSemi {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+
+.bxSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.slider img {
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.bx-wrapper {
+  width: 100%;
+  height: 500px;
+}
+
+.textInBx1,
+.textInBx2,
+.textInBx3,
+.textInBx4,
+.textInBx5,
+.textInBx6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: white;
+  background-position: center;
+}
+
+.textInBx2,
+.textInBx3,
+.textInBx4,
+.textInBx5,
+.textInBx6 {
+  color: black;
+}
+
+.textInBx3,
+.textInBx4,
+.textInBx5,
+.textInBx6 {
+  width: 800px;
+}
+
+.website-counter {
+  text-align: left;
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  color: black;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: -10px;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.subscribe {
+  padding-left: 30px;
+  flex-grow: 3;
+}
+
+.teamMember {
+  flex-grow: 3;
+  padding-bottom: 40px;
+}
+
+.emailInput input {
+  width: 365px;
+  height: 48px;
+  font-size: 16px;
+}
+
+.emailInput button {
+  width: 119px;
+  height: 48px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  border: 1px solid rgb(177, 220, 113);
+}
+
+.emailInput button:hover {
+  background-color: rgb(177, 220, 113);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .navBar {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .navSemiBar1 {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: center;
+  }
+
+  .navSemiBar2 {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .mainFont {
+    font-size: 40px;
+    text-align: center;
+    margin-left: 0;
+  }
+
+  .mainFont2 {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .main2,
+  .main3,
+  .main4 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .firstDiv,
+  .secDiv,
+  .secDivFin,
+  .main4First {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .secFirst {
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .secFirst2 {
+    margin-top: 20px;
+    font-size: 24px;
+  }
+
+  .secSemiDiv {
+    width: 100%;
+    text-align: center;
+  }
+
+  .aniImg,
+  .parkImg,
+  .familyDiv {
+    width: 100%;
+    height: auto;
+  }
+
+  .main4Container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .firstSemi {
+    font-size: 24px;
+  }
+
+  .firstSemiDiv {
+    font-size: 16px;
+  }
+
+  .ReviewDiv {
+    padding: 20px;
+  }
+
+  .emailInput input {
+    width: calc(100% - 140px);
+  }
+
+  .emailInput {
+    display: flex;
+    justify-content: center;
+  }
+
+  .emailInput button {
+    width: 120px;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .subscribe,
+  .teamMember {
+    padding: 10px;
+  }
+}
