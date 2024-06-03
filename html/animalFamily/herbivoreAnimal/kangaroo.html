@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        position: relative;
+      }
+
+      .slider {
+        width: 100%;
+        max-width: 600px;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .slider-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Fixed height */
+        flex-shrink: 0;
+        border-right: 2px solid #ddd;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio */
+      }
+
+      .slide .text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 20px; /* Increased padding */
+        cursor: pointer;
+        z-index: 100;
+        font-size: 18px; /* Increased font size */
+      }
+
+      button.prev {
+        left: 10px;
+      }
+
+      button.next {
+        right: 10px;
+      }
+
+      button.language-toggle {
+        position: static;
+        margin-top: 20px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 80px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      @media (max-width: 600px) {
+        .slider {
+          width: 100%;
+        }
+
+        button {
+          padding: 10px; /* Increased padding for mobile */
+          font-size: 14px;
+        }
+
+        button.language-toggle {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+
+        .back-button {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <div class="slider">
+      <div class="slider-inner">
+        <!-- 한국어 버전 이미지 -->
+        <div class="slide kr">
+          <img src="../../../imgs/herbivoreAnimal/캥거루1.jpg" alt="Image 1" />
+          <div class="text">
+            붉은 캥거루 <br />
+            초식동물마을 <br />
+            캥거루목 캥거루과
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="../../../imgs/herbivoreAnimal/캥거루2.jpg" alt="Image 2" />
+          <div class="text">
+            캥거루과에 속하는 포유류 동물들의 총칭이다. 호주 대륙에 서식하며
+            나무타기캥거루 등의 일부 종들은 뉴기니에도 산다. 어원은 구구
+            이미디르족의 언어로 회색 캥거루를 뜻하는 강우루(gangurru).
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="../../../imgs/herbivoreAnimal/캥거루3.jpg" alt="Image 3" />
+          <div class="text">
+            성체 캥거루는 체중이 35~90kg이라 편차가 큰 편이다. 또한 야생 동물인
+            만큼 발톱도 날카로운 편이다. 호주의 한 관광객이 캥거루에게
+            공격받았는데, 발톱에 베이는 바람에 22바늘이나 꿰매야 했던 사례도
+            있다. 또한 캥거루는 주로 두 다리와 꼬리를 사용하여 체중을
+            지탱하는데, 그 때문에 상체 근육이 약한 편이다.
+          </div>
+        </div>
+        <!-- 영어 버전 이미지 -->
+        <div class="slide en">
+          <img src="../../../imgs/herbivoreAnimal/캥거루1.jpg" alt="Image 1" />
+          <div class="text">
+            Red Kangaroo <br />
+            Herbivore Village <br />
+            Order Diprotodontia, Family Macropodidae
+          </div>
+        </div>
+        <div class="slide en">
+          <img src="../../../imgs/herbivoreAnimal/캥거루2.jpg" alt="Image 2" />
+          <div class="text">
+            It refers to the group of mammals belonging to the family
+            Macropodidae. They inhabit the Australian continent, and some
+            species like tree-kangaroos also live in New Guinea. The word
+            "kangaroo" comes from the Guugu Yimidhirr word "gangurru," meaning
+            gray kangaroo.
+          </div>
+        </div>
+        <div class="slide en">
+          <img src="../../../imgs/herbivoreAnimal/캥거루3.jpg" alt="Image 3" />
+          <div class="text">
+            Adult kangaroos have a wide range of weights, from 35 to 90 kg.
+            Additionally, as wild animals, they have sharp claws. There was an
+            incident where a tourist in Australia was attacked by a kangaroo and
+            had to receive 22 stitches due to being slashed by the claws.
+            Kangaroos primarily support their weight using their two legs and
+            tail, which results in relatively weaker upper body muscles.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+    <button class="language-toggle" onclick="toggleLanguage()">
+      Switch to English
+    </button>
+    <script>
+      let currentIndex = 0;
+      let currentLanguage = "kr"; // 기본은 한국어
+
+      function showSlide(index) {
+        const sliderInner = document.querySelector(".slider-inner");
+        const slides = document.querySelectorAll(
+          `.slider-inner .${currentLanguage}`
+        );
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].clientWidth; // 슬라이드의 너비를 계산
+        if (index >= totalSlides) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = totalSlides - 1;
+        } else {
+          currentIndex = index;
+        }
+        const offset = currentIndex * slideWidth;
+        sliderInner.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function toggleLanguage() {
+        const krImages = document.querySelectorAll(".slider-inner .kr");
+        const enImages = document.querySelectorAll(".slider-inner .en");
+        const languageToggleBtn = document.querySelector(".language-toggle");
+
+        if (currentLanguage === "kr") {
+          currentLanguage = "en";
+          krImages.forEach((img) => (img.style.display = "none"));
+          enImages.forEach((img) => (img.style.display = "block"));
+          languageToggleBtn.textContent = "한국어로 전환";
+        } else {
+          currentLanguage = "kr";
+          krImages.forEach((img) => (img.style.display = "block"));
+          enImages.forEach((img) => (img.style.display = "none"));
+          languageToggleBtn.textContent = "Switch to English";
+        }
+        currentIndex = 0;
+        showSlide(currentIndex);
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      // 초기 슬라이드 설정
+      window.addEventListener("resize", () => showSlide(currentIndex));
+      showSlide(currentIndex);
+    </script>
+  </body>
+</html>
