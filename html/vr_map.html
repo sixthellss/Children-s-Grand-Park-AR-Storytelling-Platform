@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Full Screen Image View in Three.js</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+        canvas { display: block; width: 100%; height: 100vh; }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            z-index: 100;
+            font-family: Arial, sans-serif;
+        }
+        .button {
+                font-size: 24px;
+                padding: 20px 40px;
+                background: #28a745; /* Green color */
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+        /* Mobile specific styles */
+        @media only screen and (max-width: 600px) {
+            .button {
+                font-size: 24px;
+                padding: 20px 40px;
+                background: #28a745; /* Green color */
+                color: white;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                margin-right: 10px;
+            }
+        }
+    </style>
+</head>
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TMKTYMCBR"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-5TMKTYMCBR');
+</script>
+
+<body>
+    <div id="info">
+        <h1>Explore the Map</h1>
+        <button onclick="location.href='map.html'" class="button">Back</button>
+    </div>
+    <script type="module">
+        import * as THREE from "https://unpkg.com/three@0.126.1/build/three.module.js";
+        import { OrbitControls } from "https://unpkg.com/three@0.126.1/examples/jsm/controls/OrbitControls.js";
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({antialias: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        const imageLoader = new THREE.TextureLoader();
+        imageLoader.load('/models/skybox/nz.png', function(texture) {
+            const geometry = new THREE.PlaneGeometry(70, 39.375);  // 스크린의 크기 (16:9 비율)
+            const material = new THREE.MeshBasicMaterial({ map: texture });
+            const plane = new THREE.Mesh(geometry, material);
+            plane.position.set(0, 0, -5);  // 스크린 위치 조정
+            scene.add(plane);
+        });
+
+        camera.position.z = 30;
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableZoom = true;
+        controls.minDistance = 5;
+        controls.maxDistance = 100;
+
+        function zoomIn() {
+            camera.position.z = Math.max(camera.position.z - 5, 5);
+        }
+
+        function zoomOut() {
+            camera.position.z = Math.min(camera.position.z + 5, 100);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        window.addEventListener('resize', function() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>

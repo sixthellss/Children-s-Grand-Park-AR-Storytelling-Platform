@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어린이 대공원 서비스</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="../js/encounter.js"></script>
+    <script src="../js/counter.js" charset="utf-8"></script>
+    <script src="../js/index.js"></script>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            background-image: url('../imgs/happyFamily.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 20px;
+        }
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .languageSelection {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .description {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .languageButtons button {
+            background-color: #fc6e51;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
+        }
+        .languageButtons button:hover {
+            background-color: #e55e3b;
+        }
+    </style>
+</head>
+<body>
+    <section class="main">
+        <div class="overlay">
+            <div class="languageSelection">
+                언어를 선택하세요 / Select your language
+            </div>
+            <div class="description">
+                어린이 대공원 서비스는 가족 모두에게 즐거운 경험을 제공합니다. <br>
+                인터랙티브한 AR 경험으로 대공원을 탐험하고 잊지 못할 추억을 만드세요. <br><br>
+                The Children's Grand Park service offers an enjoyable experience for the whole family. <br>
+                Explore the park with interactive AR experiences and create unforgettable memories.
+            </div>
+            <div class="languageButtons">
+                <button onclick="window.location.href='html/index_ko.html'">한국어</button>
+                <button onclick="window.location.href='html/index_en.html'">English</button>
+                <button onclick="window.location.href='html/AR_main.html'">바로 시작 / Start Now</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

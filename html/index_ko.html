@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>어린이 대공원 서비스</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+    <!-- JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="../js/encounter.js"></script>
+    <script src="../js/counter.js" charset="utf-8"></script>
+    <script src="../js/index.js"></script>
+    <script>
+        window.embeddedChatbotConfig = {
+            chatbotId: "jFEHH0Sz8d2D1XyxGeuuW",
+            domain: "www.chatbase.co"
+        };
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5TMKTYMCBR"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-5TMKTYMCBR');
+    </script>
+
+    <script src="https://www.chatbase.co/embed.min.js" chatbotId="jFEHH0Sz8d2D1XyxGeuuW" domain="www.chatbase.co" defer></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script>
+        $(document).ready(function () {
+            $(".slider").bxSlider({
+                minSlides: 1,
+                maxSlides: 1,
+                slideWidth: 300,
+                slideMargin: 5,
+                ticker: true,
+                speed: 20000,
+            });
+
+            $(".LearnBtn, .LearnBtnA, .LearnBtnMain").click(function (event) {
+                event.preventDefault(); // 링크의 기본 동작 방지
+
+                // 이동할 위치 계산 (예: main2 섹션으로 이동)
+                var targetPosition = $(".main2").offset().top;
+
+                // 스크롤 애니메이션
+                $("html, body").animate({
+                    scrollTop: targetPosition,
+                }, 900); // 이동 속도 (밀리초 단위)
+            });
+        });
+    </script>
+    <style>
+        * {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+        body {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .navBar {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background-color: white;
+            width: 100%;
+            padding: 10px;
+        }
+        .navSemiBar1, .navSemiBar2 {
+            width: 100%;
+            justify-content: space-around;
+        }
+        .navSemiBar1 {
+            margin-bottom: 10px;
+        }
+        .navSemiBar2 a {
+            text-decoration: none;
+            color: black;
+        }
+        button {
+            box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
+            background: #fc6e51;
+        }
+        .navSemiBar2 button {
+            margin-left: 10px;
+        }
+        .LearnBtn {
+            background-color: black;
+            width: 100px;
+            height: 35px;
+            border: 1px solid;
+            border: rgb(177, 220, 113);
+        }
+        .LearnBtn a {
+            color: white;
+        }
+        .LearnBtn:hover {
+            background-color: rgb(177, 220, 113);
+            transition: all 0.4s;
+        }
+        .StartBtn {
+            background-color: transparent;
+            color: black;
+            width: 100px;
+            height: 35px;
+            border: 1px solid;
+            border: rgb(177, 220, 113);
+        }
+        .StartBtn:hover {
+            background-color: rgb(177, 220, 113);
+            transition: all 0.4s;
+        }
+        .main {
+            background-image: url("../imgs/main.png");
+            width: 100%;
+            height: 80vh;
+            background-size: cover;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+        }
+        .mainFont {
+            font-size: 30px;
+            color: white;
+            margin: 0 20px;
+        }
+        .mainFont2 {
+            font-size: 16px;
+            margin-top: 10px;
+            color: white;
+        }
+        .LearnBtnMain {
+            background-color: black;
+            width: 100px;
+            height: 35px;
+            border: 1px solid;
+            border: rgb(177, 220, 113);
+        }
+        .LearnBtnMain:hover {
+            background-color: rgb(177, 220, 113);
+            transition: all 0.4s;
+        }
+        .LearnBtnMain a {
+            color: white;
+            text-decoration: none;
+        }
+        .StartBtnMain {
+            background-color: white;
+            color: black;
+            width: 100px;
+            height: 35px;
+            border: 1px solid;
+            border: rgb(177, 220, 113);
+        }
+        .StartBtnMain:hover {
+            background-color: rgb(177, 220, 113);
+            transition: all 0.4s;
+        }
+        .StartBtnMain a {
+            text-decoration: none;
+            color: black;
+        }
+        .main2 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .firstDiv {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .secDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .parkImg {
+            margin-top: 20px;
+            background-image: url("../imgs/park1.png");
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+            border-radius: 10px;
+        }
+        .main3 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .aniImg {
+            margin-top: 20px;
+            background-image: url("../imgs/KakaoTalk_20240425_204219554.gif");
+            width: 300px;
+            height: 300px;
+            background-size: cover;
+            border-radius: 10px;
+        }
+        .main4 {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .firstSemiDiv {
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .familyDiv {
+            width: 300px;
+            height: 300px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url("../imgs/fun.jpg");
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .main4Container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .visit {
+            padding-right: 20px;
+            font-size: 14px;
+        }
+        .liked {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .bxSlider {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .slider img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .textInBx1, .textInBx2, .textInBx3, .textInBx4, .textInBx5, .textInBx6 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            font-size: 20px;
+            color: white;
+        }
+        .textInBx1 { background-image: url("../imgs/KakaoTalk_20240425_191510726_03.jpg"); }
+        .textInBx2 { background-image: url("../imgs/KakaoTalk_20240425_191510726_01.jpg"); color: black; }
+        .textInBx3, .textInBx4, .textInBx5, .textInBx6 {
+            width: 100%;
+            background-position: center;
+        }
+        .ReviewDiv {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .ReviewDiv h3 {
+            font-size: 16px;
+            text-align: center;
+        }
+        footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+        .subscribe {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .emailInput input, .emailInput button {
+            width: 80%;
+            height: 35px;
+            font-size: 14px;
+        }
+        .emailInput button {
+            background-color: black;
+            color: white;
+            border: 1px solid;
+            border: rgb(177, 220, 113);
+            margin-top: 10px;
+        }
+        .emailInput button:hover {
+            background-color: rgb(177, 220, 113);
+            transition: all 0.4s;
+        }
+        .teamMember {
+            text-align: center;
+        }
+        .memberId {
+            display: flex;
+            flex-direction: column;
+        }
+        .member1 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navBar">
+        <div class="navSemiBar1">
+            <a>어린이 대공원 서비스</a>
+        </div>
+        <div class="navSemiBar2">
+            <button class="LearnBtn">
+                <a class="LearnBtnA" href="">자세히 보기</a>
+            </button>
+            <button class="StartBtn">
+                <a href="../html/AR_main.html">지금 시작</a>
+            </button>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="mainImg">
+            <div class="mainFont">
+                마법의 세계를 탐험하세요
+                <div class="mainFont2">
+                    어린이 대공원에서 인터랙티브 AR 경험으로 잊지 못할 추억을 만드세요.
+                </div>
+                <button class="LearnBtnMain">
+                    <a class="LearnBtnA">자세히 보기</a>
+                </button>
+                <button class="StartBtnMain">
+                    <a href="../html/AR_main.html">지금 시작</a>
+                </button>
+            </div>
+        </div>
+    </section>
+    <section class="main2">
+        <div class="firstDiv">
+            어린이 대공원에서 인터랙티브 모험을 시작하세요
+        </div>
+        <div class="secDiv">
+            <div class="parkImg"></div>
+        </div>
+    </section>
+    <section class="main3">
+        <div class="firstDiv">
+            우리의 마스코트를 만나보세요 <br> 어린이 대공원에서 살고 있습니다
+        </div>
+        <div class="aniImg"></div>
+    </section>
+    <section class="main4">
+        <div class="main4First">
+            <div class="firstSemi">
+                증강 현실 모험으로 어린이 대공원의 경이로움을 경험하세요.
+            </div>
+            <div class="firstSemiDiv">
+                어린이 대공원의 가상 AR 가이드에 몰입하여 인터랙티브 기회로 잊지 못할 경험을 만드세요.
+            </div>
+            <div class="main4Container">
+                <div class="visit">
+                    <div class="website-counter">3476명이 방문했습니다</div>
+                    몰입형 증강 현실 기능으로 공원을 탐험하세요.
+                </div>
+                <div class="liked">
+                    <h3>91% 만족한 방문객</h3>
+                    대다수의 방문객이 웃으며 떠났습니다.
+                </div>
+            </div>
+        </div>
+        <div class="secDiv0101">
+            <div class="familyDiv"></div>
+        </div>
+    </section>
+    <section class="Album" style="display: flex; justify-content: center; align-items: center; font-size: 30px; font-weight: normal;">
+        <p>우리의 앨범</p>
+    </section>
+    <section class="bxSlider">
+        <div class="slider">
+            <div class="textInBx1"></div>
+            <div class="textInBx2"></div>
+            <div class="textInBx3"></div>
+            <div class="textInBx4"></div>
+            <div class="textInBx5"></div>
+            <div class="textInBx6"></div>
+        </div>
+    </section>
+    <section class="ReviewDiv">
+        <div>
+            <img src="../imgs/Vector.png" alt="" style="width: 30px">
+            <img src="../imgs/Vector.png" alt="" style="width: 30px">
+            <img src="../imgs/Vector.png" alt="" style="width: 30px">
+            <img src="../imgs/Vector.png" alt="" style="width: 30px">
+            <img src="../imgs/Vector.png" alt="" style="width: 30px">
+        </div>
+        <div>
+            <h3>
+                어린이 대공원 웹사이트에서 제공하는 AR 경험은 놀라웠습니다.
+                아이들이 모험과 마법의 세계에 완전히 몰입했습니다. 온 가족이 잊지 못할 경험을 했습니다.
+            </h3>
+        </div>
+        <div>
+            <img src="" alt="">
+            <h4>John Doe</h4>
+        </div>
+    </section>
+    <footer>
+        <div class="subscribe">
+            <h1>구독</h1>
+            <p>최신 기능에 대한 업데이트를 받아보세요</p>
+            <div class="emailInput">
+                <input type="text" placeholder="이메일을 입력하세요">
+                <button>구독</button>
+            </div>
+            <p>구독함으로써, 당신은 우리의 개인정보 보호정책에 동의하게 됩니다.</p>
+        </div>
+        <div class="teamMember">
+            <h1>우리 팀원들</h1>
+            <div class="memberId">
+                <div class="member1">
+                    <p>Bakytov Yelnur</p>
+                    <p>Lee ChangKyu</p>
+                    <p>Park YuHan</p>
+                </div>
+                <div class="member1">
+                    <p>Jung DaHan</p>
+                    <p>Ibrokhimov Jakhongir Ibrokhim Ugli</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

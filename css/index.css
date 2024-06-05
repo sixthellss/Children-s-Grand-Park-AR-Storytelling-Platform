@@ -1,0 +1,510 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/*전체 css*/
+.navBar {
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+  width: 100%;
+  height: 72px;
+}
+.navSemiBar1 {
+  margin-left: 100px;
+  margin-right: 900px;
+}
+.navSemiBar2 {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.navSemiBar2 a {
+  text-decoration: none;
+
+  color: black;
+}
+button {
+  box-shadow: 0px 0px 12px -2px rgba(0, 0, 0, 0.5);
+  background: #fc6e51;
+}
+.navSemiBar2 button {
+  margin-left: 40px;
+}
+.ExploreBtn {
+  background-color: transparent;
+  color: black;
+  width: 123px;
+  height: 40px;
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+.ExploreBtn:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+.LearnBtn {
+  background-color: black;
+  width: 123px;
+  height: 40px;
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+.LearnBtn a {
+  color: white;
+}
+.LearnBtn:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+.StartBtn {
+  background-color: transparent;
+  color: black;
+  width: 123px;
+  height: 40px;
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+.StartBtn:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+/*여기까지 내비게이션바*/
+.main {
+  background-image: url("../imgs/main.png");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  align-items: center;
+  display: flex;
+}
+
+.mainImg {
+  display: flex;
+  align-items: center;
+}
+.mainFont {
+  margin-left: 64px;
+  font-size: 60px;
+  color: white;
+}
+.mainFont2 {
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.LearnBtnMain {
+  background-color: black;
+  width: 123px;
+  height: 40px;
+
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+.LearnBtnMain:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+.LearnBtnMain a {
+  color: white;
+  text-decoration: none;
+}
+.StartBtnMain {
+  background-color: white;
+  color: black;
+  width: 123px;
+  height: 40px;
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+.StartBtnMain:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+.StartBtnMain a {
+  text-decoration: none;
+  color: black;
+}
+
+.mainImg {
+  animation: fadein 3s;
+  -moz-animation: fadein 3s;
+  /* Firefox */
+  -webkit-animation: fadein 3s;
+  /* Safari and Chrome */
+  -o-animation: fadein 3s;
+  /* Opera */
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/*main까지*/
+.main2 {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.firstDiv {
+  font-size: 45px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  flex-grow: 3;
+  padding-left: 120px;
+}
+.firstDIv div {
+  font-weight: bold;
+}
+.secDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+  opacity: 0;
+  transition: opacity 3.5s ease; /* 텍스트가 서서히 나타나도록 하는 CSS transition */
+}
+.secDiv0101 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+}
+.secDivFin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 3;
+  padding-right: 120px;
+  opacity: 1;
+  transition: opacity 3.5s ease; /* 텍스트가 서서히 나타나도록 하는 CSS transition */
+}
+.secFirst {
+  display: flex;
+  flex-direction: row;
+}
+
+.secFirst div img {
+  height: 140px;
+}
+.secFirst2 {
+  font-size: 30px;
+  font-weight: bold;
+  margin-top: 40px;
+}
+.secSemiDiv {
+  width: 300px;
+  font-size: 10px;
+  height: 100px;
+}
+.secDiv div {
+  font-size: 30px;
+}
+.parkImg {
+  margin-top: 20px;
+  background-image: url("../imgs/park1.png");
+  width: 550px;
+  height: 550px;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.midBar {
+  width: 0px;
+}
+/*main2까지*/
+.main3 {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.aniImg {
+  margin-top: 20px;
+  background-image: url("../imgs/KakaoTalk_20240425_204219554.gif");
+  width: 450px;
+  height: 450px;
+  background-size: cover;
+  border-radius: 10px;
+}
+/*main3까지*/
+.main4 {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  box-sizing: border-box;
+}
+.firstSemiDiv {
+  font-size: 20px;
+}
+.familyDiv {
+  width: 640px;
+  height: 640px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("../imgs/fun.jpg");
+  border-radius: 10px;
+}
+.main4Container {
+  display: flex;
+  justify-content: space-between;
+}
+.visit {
+  padding-right: 20px;
+}
+.liked {
+  font-size: 20px;
+  margin-top: 18px;
+}
+.main4First {
+  font-size: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20px;
+  flex-grow: 2;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+.firstSemi {
+  font-size: 30px;
+  font-weight: bold;
+  padding-bottom: 20px;
+}
+/*main4*/
+.bxSlider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.slider img {
+  /*slider 안에 있는 image*/
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.bx-wrapper {
+  /*slider 틀 구조*/
+  width: 100%;
+  height: 500px;
+}
+.textInBx1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: white;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_03.jpg");
+  background-position: center;
+}
+.textInBx2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_01.jpg");
+  background-position: center;
+}
+.textInBx3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_04.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx5 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_05.jpg");
+  width: 800px;
+  background-position: center;
+}
+.textInBx6 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-size: 30px;
+  color: black;
+  background-image: url("../imgs/KakaoTalk_20240425_191510726_02.jpg");
+  width: 800px;
+  background-position: center;
+}
+
+/*counter*/
+
+.website-counter {
+  text-align: left;
+  width: 200px;
+  height: 40px;
+  padding: 10px;
+  color: black;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  margin-left: -10px;
+}
+
+/*Footer*/
+
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.subscribe {
+  padding-left: 30px;
+  flex-grow: 3;
+}
+.teamMember {
+  flex-grow: 3;
+  padding-bottom: 40px;
+}
+.emailInput input {
+  width: 365px;
+  height: 48px;
+  font-size: 16px;
+}
+
+.emailInput button {
+  width: 119px;
+  height: 48px;
+  font-size: 16px;
+  background-color: black;
+
+  color: white;
+  border: 1px solid;
+  border: rgb(177, 220, 113);
+}
+
+.emailInput button:hover {
+  background-color: rgb(177, 220, 113);
+  transition: all 0.4s;
+}
+
+.memberId {
+  display: flex;
+  flex-direction: row;
+}
+.member1 {
+  display: flex;
+  flex-direction: column;
+  margin-right: 50px;
+}
+/*reviewDiv*/
+.ReviewDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 503px;
+}
+
+.ReviewDiv h3 {
+  text-align: center;
+} /*reviewDiv*/

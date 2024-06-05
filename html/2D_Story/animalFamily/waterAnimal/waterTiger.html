@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        position: relative;
+      }
+
+      .slider {
+        width: 100%;
+        max-width: 600px;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .slider-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Fixed height */
+        flex-shrink: 0;
+        border-right: 2px solid #ddd;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio */
+      }
+
+      .slide .text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 20px; /* Increased padding */
+        cursor: pointer;
+        z-index: 100;
+        font-size: 18px; /* Increased font size */
+      }
+
+      button.prev {
+        left: 10px;
+      }
+
+      button.next {
+        right: 10px;
+      }
+
+      button.language-toggle {
+        position: static;
+        margin-top: 20px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 80px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      @media (max-width: 600px) {
+        .slider {
+          width: 100%;
+        }
+
+        button {
+          padding: 10px; /* Increased padding for mobile */
+          font-size: 14px;
+        }
+
+        button.language-toggle {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+
+        .back-button {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <div class="slider">
+      <div class="slider-inner">
+        <!-- 한국어 버전 이미지 -->
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/범1.jpg" alt="Image 1" />
+          <div class="text">
+            점박이물범 <br />
+            바다동물관 <br />
+            식육목 물범과
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/범2.jpg" alt="Image 2" />
+          <div class="text">
+            바다표범은 대략 물개와 비슷해 보이지만 차이가 좀 있는 편이다. 몸
+            길이는 1m에서 2m 사이이며, 평상시에는 바닷속에서 헤엄을 치지만 땅
+            위에서는 배와 앞다리로 기어서 움직인다.
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/범3.jpg" alt="Image 3" />
+          <div class="text">
+            토실토실한 몸으로 꿈틀꿈틀 기어다니고 마치 작은 강아지를 닮은 큰
+            눈과 귀여운 얼굴을 하고 있지만 생태계에서 손꼽히는 대형 포식자로
+            가끔은 작은 상어도 잡아먹는다.
+          </div>
+        </div>
+        <!-- 영어 버전 이미지 -->
+        <div class="slide en">
+          <img src="/imgs/waterAnimal/범1.jpg" alt="Image 1" />
+          <div class="text">
+            Spotted seal <br />
+            Oceanarium <br />
+            Carnivora, Family Phocidae
+          </div>
+        </div>
+        <div class="slide en">
+          <img src="/imgs/waterAnimal/범2.jpg" alt="Image 2" />
+          <div class="text">
+            The harbor seal appears similar to a seal but has some differences.
+            It has a body length ranging from 1 to 2 meters, and while it
+            usually swims underwater, it crawls on land using its belly and
+            front limbs.
+          </div>
+        </div>
+        <div class="slide en">
+          <img src="/imgs/waterAnimal/범3.jpg" alt="Image 3" />
+          <div class="text">
+            It has a sleek and slippery body, with big, puppy-like eyes and a
+            cute face. However, it is a prominent predator in the ecosystem and
+            sometimes even preys on small sharks.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+    <button class="language-toggle" onclick="toggleLanguage()">
+      Switch to English
+    </button>
+    <script>
+      let currentIndex = 0;
+      let currentLanguage = "kr"; // 기본은 한국어
+
+      function showSlide(index) {
+        const sliderInner = document.querySelector(".slider-inner");
+        const slides = document.querySelectorAll(
+          `.slider-inner .${currentLanguage}`
+        );
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].clientWidth; // 슬라이드의 너비를 계산
+        if (index >= totalSlides) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = totalSlides - 1;
+        } else {
+          currentIndex = index;
+        }
+        const offset = currentIndex * slideWidth;
+        sliderInner.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function toggleLanguage() {
+        const krImages = document.querySelectorAll(".slider-inner .kr");
+        const enImages = document.querySelectorAll(".slider-inner .en");
+        const languageToggleBtn = document.querySelector(".language-toggle");
+
+        if (currentLanguage === "kr") {
+          currentLanguage = "en";
+          krImages.forEach((img) => (img.style.display = "none"));
+          enImages.forEach((img) => (img.style.display = "block"));
+          languageToggleBtn.textContent = "한국어로 전환";
+        } else {
+          currentLanguage = "kr";
+          krImages.forEach((img) => (img.style.display = "block"));
+          enImages.forEach((img) => (img.style.display = "none"));
+          languageToggleBtn.textContent = "Switch to English";
+        }
+        currentIndex = 0;
+        showSlide(currentIndex);
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      // 초기 슬라이드 설정
+      window.addEventListener("resize", () => showSlide(currentIndex));
+      showSlide(currentIndex);
+    </script>
+  </body>
+</html>

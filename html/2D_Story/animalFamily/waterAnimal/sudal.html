@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        position: relative;
+      }
+
+      .slider {
+        width: 100%;
+        max-width: 600px;
+        overflow: hidden;
+        position: relative;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        background: #fff;
+      }
+
+      .slider-inner {
+        display: flex;
+        transition: transform 0.5s ease-in-out;
+      }
+
+      .slide {
+        position: relative;
+        width: 100%;
+        height: 400px; /* Fixed height */
+        flex-shrink: 0;
+        border-right: 2px solid #ddd;
+      }
+
+      .slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Maintain aspect ratio */
+      }
+
+      .slide .text {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        color: white;
+        font-size: 24px;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding: 10px;
+        border-radius: 5px;
+      }
+
+      button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 20px; /* Increased padding */
+        cursor: pointer;
+        z-index: 100;
+        font-size: 18px; /* Increased font size */
+      }
+
+      button.prev {
+        left: 10px;
+      }
+
+      button.next {
+        right: 10px;
+      }
+
+      button.language-toggle {
+        position: static;
+        margin-top: 20px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+      }
+
+      button:focus {
+        outline: none;
+      }
+
+      .back-button {
+        position: absolute;
+        top: 80px;
+        left: 10px;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        z-index: 100;
+      }
+
+      @media (max-width: 600px) {
+        .slider {
+          width: 100%;
+        }
+
+        button {
+          padding: 10px; /* Increased padding for mobile */
+          font-size: 14px;
+        }
+
+        button.language-toggle {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+
+        .back-button {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <button class="back-button" onclick="goBack()">Back</button>
+    <div class="slider">
+      <div class="slider-inner">
+        <!-- 한국어 버전 이미지 -->
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/수달1.jfif" alt="Image 1" />
+          <div class="text">
+            유라시아 수달 <br />
+            바다동물관 <br />
+            식육목 족제비과
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/수달2.jfif" alt="Image 2" />
+          <div class="text">
+            몸통 길이는 평균 65~70cm 정도이며 꼬리 길이는 40~50 cm 정도 무게는
+            12kg. 유럽 기준으로 봄철에 교미하며, 주로 6월에 새끼를 1~5마리쯤
+            낳는다.
+          </div>
+        </div>
+        <div class="slide kr">
+          <img src="/imgs/waterAnimal/수달3.jfif" alt="Image 3" />
+          <div class="text">
+            입 주변에 있는 수염은 더듬이 역할을 한다. 송곳니가 발달했으며
+            야행성이며, 후각이 예민하다. 물가에서 굴을 파서 산다. 활동 반경도
+            20~30km로 넓은 편이다.
+          </div>
+        </div>
+        <!-- 영어 버전 이미지 -->
+        <div class="slide en" style="display: none">
+          <img src="/imgs/waterAnimal/수달1.jfif" alt="Image 1" />
+          <div class="text">
+            Eurasian otter <br />
+            Aquarium of sea animals <br />
+            Carnivora, Family Mustelidae
+          </div>
+        </div>
+        <div class="slide en" style="display: none">
+          <img src="/imgs/waterAnimal/수달2.jfif" alt="Image 2" />
+          <div class="text">
+            The body length is about 65-70 cm on average, with a tail length of
+            about 40-50 cm and a weight of 12 kg. In Europe, they mate in
+            spring, and usually give birth to 1-5 cubs around June.
+          </div>
+        </div>
+        <div class="slide en" style="display: none">
+          <img src="/imgs/waterAnimal/수달3.jfif" alt="Image 3" />
+          <div class="text">
+            The whiskers around the mouth act as feelers. They have developed
+            canine teeth, are nocturnal, and have a keen sense of smell. They
+            live by digging burrows near water. Their range of activity is also
+            quite wide, about 20-30 km.
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+    <button class="language-toggle" onclick="toggleLanguage()">
+      Switch to English
+    </button>
+    <script>
+      let currentIndex = 0;
+      let currentLanguage = "kr"; // 기본은 한국어
+
+      function showSlide(index) {
+        const sliderInner = document.querySelector(".slider-inner");
+        const slides = document.querySelectorAll(
+          `.slider-inner .${currentLanguage}`
+        );
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].clientWidth; // 슬라이드의 너비를 계산
+        if (index >= totalSlides) {
+          currentIndex = 0;
+        } else if (index < 0) {
+          currentIndex = totalSlides - 1;
+        } else {
+          currentIndex = index;
+        }
+        const offset = currentIndex * slideWidth;
+        sliderInner.style.transform = `translateX(-${offset}px)`;
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function toggleLanguage() {
+        const krImages = document.querySelectorAll(".slider-inner .kr");
+        const enImages = document.querySelectorAll(".slider-inner .en");
+        const languageToggleBtn = document.querySelector(".language-toggle");
+
+        if (currentLanguage === "kr") {
+          currentLanguage = "en";
+          krImages.forEach((img) => (img.style.display = "none"));
+          enImages.forEach((img) => (img.style.display = "block"));
+          languageToggleBtn.textContent = "한국어로 전환";
+        } else {
+          currentLanguage = "kr";
+          krImages.forEach((img) => (img.style.display = "block"));
+          enImages.forEach((img) => (img.style.display = "none"));
+          languageToggleBtn.textContent = "Switch to English";
+        }
+        currentIndex = 0;
+        showSlide(currentIndex);
+      }
+
+      function goBack() {
+        window.history.back();
+      }
+
+      // 초기 슬라이드 설정
+      window.addEventListener("resize", () => showSlide(currentIndex));
+      showSlide(currentIndex);
+    </script>
+  </body>
+</html>

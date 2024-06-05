@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Slider</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            position: relative;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .slider {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .slider-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slider-inner img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-right: 2px solid #ddd;
+        }
+
+        .indices {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            top: -40px;
+            width: 100%;
+            pointer-events: none;
+            flex-wrap: wrap;
+        }
+        
+
+        .index {
+            width: 120px;
+            height: 40px;
+            margin: 0 1px;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+            cursor: pointer;
+            pointer-events: all;
+            transition: background-color 0.3s;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+        }
+
+        .index:nth-child(1) { background-color: rgba(39, 174, 96, 0.3); } 
+        .index:nth-child(2) { background-color: rgba(39, 174, 96, 0.3); } 
+        .index:nth-child(3) { background-color: rgba(39, 174, 96, 0.3); } 
+        .index:nth-child(4) { background-color: rgba(39, 174, 96, 0.3); } 
+        .index:nth-child(5) { background-color: rgba(39, 174, 96, 0.3); } 
+
+        .index.active:nth-child(1) { background-color: #0b2e19; } 
+        .index.active:nth-child(2) { background-color: #0b2e19; } 
+        .index.active:nth-child(3) { background-color: #0b2e19; } 
+        .index.active:nth-child(4) { background-color: #0b2e19; } 
+        .index.active:nth-child(5) { background-color: #0b2e19; } 
+
+        button {
+            background-color: #106f30;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            margin: 0 5px;
+        }
+
+        button:focus {
+            outline: none;
+        }
+
+        button.prev {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        button.next {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .top-buttons {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        @media (max-width: 600px) {
+            .slider {
+                width: 100%;
+            }
+
+            button {
+                padding: 5px 10px;
+                font-size: 12px;
+            }
+
+            .index {
+                width: 70px; /* 작은 화면에서는 버튼 너비 감소 */
+                height: 10px; /* 작은 화면에서는 버튼 높이 감소 */
+                font-size: 8px; /* 작은 화면에서는 글자 크기 감소 */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="top-buttons">
+        <button class="ar-home-button" onclick="location.href='AR_main.html'">Back</button>
+    </div>
+    <div class="slider-container">
+        <div class="indices">
+            <div class="index" onclick="goToSlide(0)">전체 지도(Map)</div>
+            <div class="index" onclick="goToSlide(1)">동물원 지도(Zoo)</div>
+            <div class="index" onclick="goToSlide(2)">맹수마을(Ferocios)</div>
+            <div class="index" onclick="goToSlide(3)">대피경로(Evacuation map)</div>
+            <div class="index" onclick="goToSlide(4)">위성지도(Satellite map)</div>
+        </div>
+        <div class="slider">
+            <div class="slider-inner">
+                <img class="kr" src="/imgs/map_main_map.jpg" alt="Image 1">
+                <img class="kr" src="/imgs/map_zoo_map.jpg" alt="Image 2">
+                <img class="kr" src="/imgs/map_Ferocios.jpg" alt="Image 3">
+                <img class="kr" src="/imgs/emergency.jpg" alt="Image 4">
+                <img class="kr" src="/imgs/map_satellite.jpg" alt="Image 5">
+                <img class="en" src="/imgs/map_main_map.jpg" alt="Image 1" style="display: none;">
+                <img class="en" src="/imgs/map_zoo_map.jpg" alt="Image 2" style="display: none;">
+                <img class="en" src="/imgs/map_Ferocios.jpg" alt="Image 3" style="display: none;">
+                <img class="en" src="/imgs/emergency.jpg" alt="Image 3" style="display: none;">
+                <img class="en" src="/imgs/map_satellite_en.jpg" alt="Image 3" style="display: none;">
+            </div>
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+        </div>
+    </div>
+    <div class="button-group">
+        <button class="vr-map" onclick="goToVRMap()">Detailed Map</button>
+        <button class="language-toggle" onclick="toggleLanguage()">Switch to English</button>
+        <button class="google-map" onclick="goToGoogleMap()">Google Map</button>
+    </div>
+    <script>
+        let currentIndex = 0;
+        let currentLanguage = 'kr';
+
+        function showSlide(index) {
+            const sliderInner = document.querySelector('.slider-inner');
+            const slides = document.querySelectorAll(`.slider-inner .${currentLanguage}`);
+            const totalSlides = slides.length;
+            const slideWidth = slides[0].clientWidth;
+            if (index >= totalSlides) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = totalSlides - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = currentIndex * slideWidth;
+            sliderInner.style.transform = `translateX(-${offset}px)`;
+            updateIndices();
+        }
+
+        function nextSlide() {
+            showSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(currentIndex - 1);
+        }
+
+        function toggleLanguage() {
+            const krImages = document.querySelectorAll('.slider-inner .kr');
+            const enImages = document.querySelectorAll('.slider-inner .en');
+            const languageToggleBtn = document.querySelector('.language-toggle');
+
+            if (currentLanguage === 'kr') {
+                currentLanguage = 'en';
+                krImages.forEach(img => img.style.display = 'none');
+                enImages.forEach(img => img.style.display = 'block');
+                languageToggleBtn.textContent = '한국어로 전환';
+            } else {
+                currentLanguage = 'kr';
+                krImages.forEach(img => img.style.display = 'block');
+                enImages.forEach(img => img.style.display = 'none');
+                languageToggleBtn.textContent = 'Switch to English';
+            }
+            currentIndex = 0;
+            showSlide(currentIndex);
+        }
+
+        function updateIndices() {
+            const indices = document.querySelectorAll('.index');
+            indices.forEach((index, i) => {
+                if (i === currentIndex) {
+                    index.classList.add('active');
+                } else {
+                    index.classList.remove('active');
+                }
+            });
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+        }
+
+        function goToVRMap() {
+            window.location.href = 'vr_map.html';
+        }
+
+        function goToGoogleMap() {
+            window.open('https://www.google.com/maps/d/u/0/viewer?hl=ko&ie=UTF8&msa=0&ll=37.54893300000001%2C127.081969&spn=0.012572%2C0.019248&z=16&mid=1fkFcpQ17x6RV9kWFkXcpvoCrfvI', '_blank');
+        }
+
+        window.addEventListener('resize', () => showSlide(currentIndex));
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
